@@ -116,6 +116,7 @@ Plug 'autozimu/LanguageClient-neovim', {
       \ }
 Plug 'Shougo/neocomplete.vim'
 Plug 'osyo-manga/vim-monster'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 " }}}
