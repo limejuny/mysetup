@@ -4,6 +4,6 @@
 1. Install [vim-plug](https://github.com/junegunn/vim-plug)
 2. Type this command in your terminal
 ```
-$ cp .vimrc ~
-$ cp .ycm_extra_conf.py ~/.vim/
+$ cp vimrc ~/.vimrc
+$ cp ycm_extra_conf.py ~/.vim/.ycm_extra_conf.py
 ```

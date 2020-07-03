@@ -117,7 +117,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/neocomplete.vim'
 Plug 'osyo-manga/vim-monster'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 call plug#end()
 " }}}
 
@@ -192,6 +191,9 @@ nnoremap <leader>ma :set mouse=a<cr>
 
 " Turn mouse mode off
 nnoremap <leader>mo :set mouse=<cr>
+
+" Tagbar Toggle
+nnoremap <leader>t :TagbarToggle<cr>
 
 " Default to mouse mode on
 set mouse=a
@@ -483,12 +485,9 @@ let g:SuperTabDefaultCompletionType = '<c-x><c-n>'
 
 " }}}
 
-" LanguageClient-neovim {{{
+" LanguageClient{{{
 " Tell the language client to use the default IP and port
 " that Solargraph runs on
-" let g:LanguageClient_serverCommands = {
-"       \ 'ruby': ['tcp://localhost:7658']
-"       \ }
 let g:LanguageClient_serverCommands = {
       \ 'ruby': ['solargraph', 'stdio'],
       \ }
@@ -511,7 +510,6 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-" let g:ycm_extra_conf_globlist = ['!/usr/local/rvm/rubies/ruby-2.7.0/lib/ruby/2.7.0/x86_64-linux/*']
 
 " }}}
 
