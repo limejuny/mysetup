@@ -57,6 +57,7 @@ autocmd FileType ruby,eruby compiler ruby
 " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby set completefunc=LanguageClient#complete
 ab vt vert term
+ab t tabnew
 
 " }}}
 
@@ -254,6 +255,9 @@ endif
 
 let g:airline_powerline_fonts = 1
 let g:airline_symbols.space = "\ua0"
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 " }}}
 
 " Files, backups and undo {{{
