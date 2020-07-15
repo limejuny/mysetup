@@ -86,6 +86,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
+Plug 'jeetsukumaran/vim-markology'
 
 " Text manipulation
 Plug 'vim-scripts/Align'
