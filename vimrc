@@ -341,6 +341,10 @@ set hidden
 " previous buffer, next buffer
 nnoremap <leader>bp :bp<cr>
 nnoremap <leader>bn :bn<cr>
+nnoremap <leader>h :bp<cr>
+nnoremap <leader>j :bp<cr>
+nnoremap <leader>k :bn<cr>
+nnoremap <leader>l :bn<cr>
 
 " close every window in current tabview but the current
 nnoremap <leader>bo <c-w>o
