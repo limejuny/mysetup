@@ -97,13 +97,6 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
-" Haskell
-" Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-" Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-" Plug 'neoclide/coc.nvim', { 'do': { -> coc#util#install() } }
-" Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-" Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-
 " Colorscheme
 Plug 'vim-scripts/wombat256.vim'
 
