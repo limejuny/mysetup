@@ -7,3 +7,8 @@
 $ cp vimrc ~/.vimrc
 $ cp ycm_extra_conf.py ~/.vim/.ycm_extra_conf.py
 ```
+or
+```
+$ chmod +x ./install.sh
+$ ./install.sh install
+```
