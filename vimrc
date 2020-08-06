@@ -112,6 +112,8 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/neocomplete.vim'
 Plug 'osyo-manga/vim-monster'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+
 call plug#end()
 " }}}
 
@@ -512,6 +514,89 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" }}}
+
+" Vimwiki {{{
+let g:vimwiki_list = [
+      \ {
+      \   'path': '/home/loonatic/src/eggmoid.github.io/_wiki/',
+      \   'ext' : '.md',
+      \   'diary_rel_path': '.',
+      \ },
+\]
+let g:vimwiki_conceallevel = 0
+let g:vimwiki_global_ext = 0
+
+command! WikiIndex :VimwikiIndex
+nmap <leader>ww <Plug>VimwikiIndex
+nmap <leader>wi <Plug>VimwikiDiaryIndex
+nmap <leader>w<leader>w <Plug>VimwikiMakeDiaryNote
+nmap <leader>wt :VimwikiTable<CR>
+
+nnoremap <F4> :execute "VWS /" . expand("<cword>") . "/" <Bar> :lopen<CR>
+nnoremap <S-F4> :execute "VWB" <Bar> :lopen<CR>
+
+function! LastModified()
+	if &modified
+		let save_cursor = getpos(".")
+		let n = min([10, line("$")])
+		keepjumps exe '1,' . n . 's#^\(.\{,10}updated\s*: \).*#\1' .
+					\ strftime('%Y-%m-%d %H:%M:%S +0900') . '#e'
+		call histdel('search', -1)
+		call setpos('.', save_cursor)
+	endif
+endfun
+
+function! NewTemplate()
+	let l:wiki_directory = v:false
+
+  for wiki in g:vimwiki_list
+    if expand('%:p:h') . '/' == wiki.path
+      let l:wiki_directory = v:true
+      break
+    endif
+  endfor
+
+  if !l:wiki_directory
+    return
+  endif
+
+  if line("$") > 1
+    return
+  endif
+
+	let l:template = []
+	call add(l:template, '---')
+	call add(l:template, 'layout  : wiki')
+	call add(l:template, 'title   : ')
+	call add(l:template, 'summary : ')
+	call add(l:template, 'date    : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
+	call add(l:template, 'updated : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
+	call add(l:template, 'tags    : ')
+	call add(l:template, 'toc     : true')
+	call add(l:template, 'public  : true')
+	call add(l:template, 'parent  : ')
+	call add(l:template, 'latex   : false')
+	call add(l:template, '---')
+	call add(l:template, '* TOC')
+	call add(l:template, '{:toc}')
+	call add(l:template, '')
+	call add(l:template, '# ')
+	call setline(1, l:template)
+	execute 'normal! G'
+	execute 'normal! $'
+
+	echom 'new wiki page has created'
+endfunction
+
+autocmd BufWritePre *.md call LastModified()
+autocmd BufRead,BufNewFile *.md call NewTemplate()
+
+augroup vimwikiauto
+  autocmd BufWritePre *wiki/*.md call LastModified()
+  autocmd BufRead,BufNewFile *wiki/*.md call NewTemplate()
+augroup END
 
 " }}}
 
