@@ -113,6 +113,7 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'osyo-manga/vim-monster'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 " }}}
@@ -538,18 +539,18 @@ nnoremap <F4> :execute "VWS /" . expand("<cword>") . "/" <Bar> :lopen<CR>
 nnoremap <S-F4> :execute "VWB" <Bar> :lopen<CR>
 
 function! LastModified()
-	if &modified
-		let save_cursor = getpos(".")
-		let n = min([10, line("$")])
-		keepjumps exe '1,' . n . 's#^\(.\{,10}updated\s*: \).*#\1' .
-					\ strftime('%Y-%m-%d %H:%M:%S +0900') . '#e'
-		call histdel('search', -1)
-		call setpos('.', save_cursor)
-	endif
+  if &modified
+    let save_cursor = getpos(".")
+    let n = min([10, line("$")])
+    keepjumps exe '1,' . n . 's#^\(.\{,10}updated\s*: \).*#\1' .
+          \ strftime('%Y-%m-%d %H:%M:%S +0900') . '#e'
+    call histdel('search', -1)
+    call setpos('.', save_cursor)
+  endif
 endfun
 
 function! NewTemplate()
-	let l:wiki_directory = v:false
+  let l:wiki_directory = v:false
 
   for wiki in g:vimwiki_list
     if expand('%:p:h') . '/' == wiki.path
@@ -566,28 +567,28 @@ function! NewTemplate()
     return
   endif
 
-	let l:template = []
-	call add(l:template, '---')
-	call add(l:template, 'layout  : wiki')
-	call add(l:template, 'title   : ')
-	call add(l:template, 'summary : ')
-	call add(l:template, 'date    : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
-	call add(l:template, 'updated : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
-	call add(l:template, 'tags    : ')
-	call add(l:template, 'toc     : true')
-	call add(l:template, 'public  : true')
-	call add(l:template, 'parent  : ')
-	call add(l:template, 'latex   : false')
-	call add(l:template, '---')
-	call add(l:template, '* TOC')
-	call add(l:template, '{:toc}')
-	call add(l:template, '')
-	call add(l:template, '# ')
-	call setline(1, l:template)
-	execute 'normal! G'
-	execute 'normal! $'
+  let l:template = []
+  call add(l:template, '---')
+  call add(l:template, 'layout  : wiki')
+  call add(l:template, 'title   : ')
+  call add(l:template, 'summary : ')
+  call add(l:template, 'date    : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
+  call add(l:template, 'updated : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
+  call add(l:template, 'tags    : ')
+  call add(l:template, 'toc     : true')
+  call add(l:template, 'public  : true')
+  call add(l:template, 'parent  : ')
+  call add(l:template, 'latex   : false')
+  call add(l:template, '---')
+  call add(l:template, '* TOC')
+  call add(l:template, '{:toc}')
+  call add(l:template, '')
+  call add(l:template, '# ')
+  call setline(1, l:template)
+  execute 'normal! G'
+  execute 'normal! $'
 
-	echom 'new wiki page has created'
+  echom 'new wiki page has created'
 endfunction
 
 autocmd BufWritePre *.md call LastModified()
