@@ -114,6 +114,8 @@ Plug 'osyo-manga/vim-monster'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'mhinz/vim-startify'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'jszakmeister/markdown2ctags', {'do' : 'cp ./markdown2ctags.py ~/.local/bin/markdown2ctags.py'}
 
 call plug#end()
 " }}}
@@ -598,6 +600,28 @@ augroup vimwikiauto
   autocmd BufWritePre *wiki/*.md call LastModified()
   autocmd BufRead,BufNewFile *wiki/*.md call NewTemplate()
 augroup END
+
+let g:tagbar_type_markdown = {
+      \ 'ctagstype' : 'markdown',
+      \ 'kinds' : [
+        \ 'h:headings',
+        \ 'l:links',
+        \ 'i:images'
+        \ ],
+      \ 'sort' : 0
+      \ }
+let g:tagbar_type_vimwiki = {
+      \ 'ctagstype' : 'vimwiki',
+      \ 'ctagsbin' : '~/.local/bin/markdown2ctags.py',
+      \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+      \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+        \ ],
+      \ 'sro' : '»',
+      \ 'kind2scope' : { 's' : 'section' },
+      \ 'sort' : 0
+      \ }
 
 " }}}
 
