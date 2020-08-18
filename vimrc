@@ -622,6 +622,8 @@ let g:tagbar_type_vimwiki = {
       \ 'kind2scope' : { 's' : 'section' },
       \ 'sort' : 0
       \ }
+autocmd FileType vimwiki imap <F2> #### 
+autocmd FileType vimwiki map <F2> i#### 
 
 " }}}
 
