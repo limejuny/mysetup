@@ -100,6 +100,11 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Colorscheme
 Plug 'vim-scripts/wombat256.vim'
 
+" MIT-scheme
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'Olical/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
+
 " Custom bundles
 Plug 'ycm-core/YouCompleteMe'
 ab gt YcmComplete GoTo
@@ -622,9 +627,17 @@ let g:tagbar_type_vimwiki = {
       \ 'kind2scope' : { 's' : 'section' },
       \ 'sort' : 0
       \ }
+autocmd Filetype vimwiki let g:ycm_filetype_blacklist = {
+      \ 'vimwiki': 1
+      \}
 autocmd FileType vimwiki imap <F2> #### 
 autocmd FileType vimwiki map <F2> i#### 
 
+" }}}
+
+" vim-scheme {{{
+let g:scheme_split_size = -10
+let g:scheme_excutable = "racket"
 " }}}
 
 " Customization {{{
