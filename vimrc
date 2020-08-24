@@ -637,7 +637,7 @@ autocmd FileType vimwiki map <F2> i####
 
 " vim-scheme {{{
 let g:scheme_split_size = -10
-let g:scheme_excutable = "racket"
+let g:scheme_executable = "racket"
 " }}}
 
 " Customization {{{
