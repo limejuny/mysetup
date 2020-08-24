@@ -100,15 +100,10 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Colorscheme
 Plug 'vim-scripts/wombat256.vim'
 
-" MIT-scheme
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'Olical/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
-
-" Custom bundles
+" Autocomplete
 Plug 'ycm-core/YouCompleteMe'
 ab gt YcmComplete GoTo
-Plug 'vim-scripts/OmniCppComplete'
+Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
@@ -116,7 +111,20 @@ Plug 'autozimu/LanguageClient-neovim', {
       \ }
 Plug 'Shougo/neocomplete.vim'
 Plug 'osyo-manga/vim-monster'
+
+" Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Scheme
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'Olical/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
+
+" Scala
+Plug 'derekwyatt/vim-scala'
+Plug 'neoclide/coc.nvim', { 'for': 'scala', 'branch': 'release' }
+
+" Custom bundles
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'mhinz/vim-startify'
 Plug 'ludovicchabant/vim-gutentags'
@@ -640,9 +648,18 @@ let g:scheme_split_size = -10
 let g:scheme_executable = "racket"
 " }}}
 
+" vim-scala {{{
+" Help Vim recognize *.sbt and *.sc as Scala files
+au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
+autocmd FileType scala :call coc#config("suggest.autoTrigger", "none")
+
+" ~/.vim/after/ftplugin/scala.vim
+" }}}
+
 " Customization {{{
 set fileencodings=utf-8,euc-kr,default
 set runtimepath^=~/.vim/bundle/vim-erlang-omnicomplete
+
 " let g:coc_disable_startup_warning = 1
 
 " }}}
