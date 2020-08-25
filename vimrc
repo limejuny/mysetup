@@ -129,6 +129,7 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'mhinz/vim-startify'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'jszakmeister/markdown2ctags', {'do' : 'cp ./markdown2ctags.py ~/.local/bin/markdown2ctags.py'}
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 " }}}
@@ -660,6 +661,8 @@ au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 " Customization {{{
 set fileencodings=utf-8,euc-kr,default
 set runtimepath^=~/.vim/bundle/vim-erlang-omnicomplete
+
+let delimitMate_expand_cr=1
 
 " let g:coc_disable_startup_warning = 1
 
