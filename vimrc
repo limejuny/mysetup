@@ -122,7 +122,7 @@ Plug 'Olical/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
 
 " Scala
 Plug 'derekwyatt/vim-scala'
-Plug 'neoclide/coc.nvim', { 'for': 'scala', 'branch': 'release' }
+" Plug 'neoclide/coc.nvim', { 'for': 'scala', 'branch': 'release' }
 
 " Custom bundles
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
@@ -510,6 +510,7 @@ let g:SuperTabDefaultCompletionType = '<c-x><c-n>'
 " that Solargraph runs on
 let g:LanguageClient_serverCommands = {
       \ 'ruby': ['solargraph', 'stdio'],
+      \ 'scala': ['metals-vim'],
       \ }
 let g:monster#completion#backend = 'solargraph'
 let g:neocomplete#enable_at_startup = 1
@@ -651,7 +652,7 @@ let g:scheme_executable = "racket"
 " vim-scala {{{
 " Help Vim recognize *.sbt and *.sc as Scala files
 au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
-autocmd FileType scala :call coc#config("suggest.autoTrigger", "none")
+" autocmd FileType scala :call coc#config("suggest.autoTrigger", "none")
 
 " ~/.vim/after/ftplugin/scala.vim
 " }}}
