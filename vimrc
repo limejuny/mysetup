@@ -56,8 +56,7 @@ filetype plugin indent on
 autocmd FileType ruby,eruby compiler ruby
 " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby set completefunc=LanguageClient#complete
-ab vt vert term
-ab t tabnew
+cnoreabbrev vt vert term
 
 " }}}
 
@@ -102,7 +101,7 @@ Plug 'vim-scripts/wombat256.vim'
 
 " Autocomplete
 Plug 'ycm-core/YouCompleteMe'
-ab gt YcmComplete GoTo
+cnoreabbrev gt YcmComplete GoTo
 Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'autozimu/LanguageClient-neovim', {
@@ -127,7 +126,7 @@ Plug 'derekwyatt/vim-scala'
 " Custom bundles
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'mhinz/vim-startify'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags', { 'for': ['vimwiki', 'markdown'] }
 Plug 'jszakmeister/markdown2ctags', {'do' : 'cp ./markdown2ctags.py ~/.local/bin/markdown2ctags.py'}
 Plug 'Raimondi/delimitMate'
 
