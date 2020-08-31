@@ -29,6 +29,7 @@ if [ "$1" == "install" ]; then
   gem install solargraph
   solargraph download-core
   echo ":CocInstall coc-metals"
+  echo "set -o vi (/etc/bash.bashrc)"
 elif [ "$1" == "uninstall" ]; then
   trycp ./backup/vimrc ~/.vimrc uninstall 
   trycp ./backup/ycm_extra_conf.py ~/.vim/.ycm_extra_conf.py uninstall
