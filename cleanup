@@ -8,6 +8,7 @@ rm ~/.rediscli_history 2>/dev/null
 rm ~/.racket/racket-prefs.rktd 2>/dev/null
 rm ~/.dbshell 2>/dev/null
 rm ~/.scala_history 2>/dev/null
+rm ~/.scala_history_jline3 2>/dev/null
 cp ~/.java/.userPrefs/tool/JShell/prefs.xml.bak ~/.java/.userPrefs/tool/JShell/prefs.xml 2>/dev/null
 rm ~/.bash_history 2>/dev/null
 history -c
