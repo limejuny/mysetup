@@ -27,6 +27,7 @@ if [ "$1" == "install" ]; then
   trycp ycm_extra_conf.py ~/.vim/.ycm_extra_conf.py install
   trycp tmux.conf ~/.tmux.conf install
   trycp cleanup ~/.cleanup install
+  trycp python.vim ~/.vim/after/ftplugin/python.vim install
   gem install solargraph
   solargraph download-core
   echo ":CocInstall coc-metals"
@@ -37,6 +38,7 @@ elif [ "$1" == "uninstall" ]; then
   trycp ./backup/ycm_extra_conf.py ~/.vim/.ycm_extra_conf.py uninstall
   trycp ./backup/tmux.conf ~/.tmux.conf uninstall
   trycp ./backup/cleanup ~/.cleanup uninstall
+  trycp ./backup/python.vim ~/.vim/after/ftplugin/python.vim uninstall
 else
   echo "usage: ./install.sh (install|uninsatll)"
 fi
