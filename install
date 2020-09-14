@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "$1" == "restore" ]; then
+  cat list.txt | awk '{print "mv", "./backup/"$1, $2}' | sh -x
+else
+  # echo "usage: ./install (install|restore)"
+  if [ ! -d backup ]; then
+    mkdir backup
+  fi
+  cat list.txt | awk '{print "mv", $2, "./backup/"$1}' | sh -x
+  cat list.txt | awk '{print "mv", "./original/"$1, $2}' |sh -x
+  gem install solargraph
+  gem install tmuxinator
+  solargraph download-core
+  echo "========================"
+  echo ":CocInstall coc-metals"
+  echo "set -o vi (/etc/bash.bashrc)"
+fi
