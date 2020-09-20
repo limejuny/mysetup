@@ -220,7 +220,7 @@ set mouse=a
 " 5 -> blinking vertical bar
 " 6 -> solid vertical bar
 
-if &term =~ '^xterm'
+if &term =~ '^xterm' || &term =~ '^screen-256color'
   " normal mode
   let &t_EI .= "\<Esc>[2 q"
   " insert mode
