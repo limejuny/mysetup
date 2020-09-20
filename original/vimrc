@@ -656,8 +656,8 @@ let g:tagbar_type_vimwiki = {
 autocmd Filetype vimwiki let g:ycm_filetype_blacklist = {
       \ 'vimwiki': 1
       \}
-autocmd FileType vimwiki imap <F2> #### 
-autocmd FileType vimwiki map <F2> i#### 
+autocmd FileType vimwiki imap <F2> ## 
+autocmd FileType vimwiki map <F2> i## 
 
 " }}}
 
