@@ -31,7 +31,8 @@
             "initialCols": 120,
             "initialRows": 30,
             "fontFace": "Hack",
-            "fontSize": 10
+            "fontSize": 10,
+            "startingDirectory": "."
         },
         "list":
         [
@@ -54,7 +55,7 @@
                 "hidden": false,
                 "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "//wsl$/Ubuntu/home/loonatic"
+                // "startingDirectory": "//wsl$/Ubuntu/home/loonatic"
             },
             {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
