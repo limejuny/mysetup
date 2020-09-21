@@ -227,6 +227,9 @@ if &term =~ '^xterm' || &term =~ '^screen-256color'
   let &t_SI .= "\<Esc>[5 q"
 endif
 
+" Startify Shortcut
+nnoremap <leader>ss :Startify<cr>
+
 " }}}
 
 " Colors and Fonts {{{
