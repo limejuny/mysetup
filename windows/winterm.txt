@@ -32,7 +32,8 @@
             "initialRows": 30,
             "fontFace": "Hack",
             "fontSize": 10,
-            "startingDirectory": "."
+            "startingDirectory": ".",
+            "closeOnExit": "always"
         },
         "list":
         [
