@@ -230,6 +230,12 @@ endif
 " Startify Shortcut
 nnoremap <leader>ss :Startify<cr>
 
+" Moving cursor in insert mode
+imap <C-h> <Esc>h
+imap <C-j> <Esc>j
+imap <C-k> <Esc>k
+imap <C-l> <Esc>l
+
 " }}}
 
 " Colors and Fonts {{{
