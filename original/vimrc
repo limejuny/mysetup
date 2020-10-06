@@ -114,6 +114,9 @@ Plug 'osyo-manga/vim-monster'
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" Python
+Plug 'mindriot101/vim-yapf', { 'for': 'python' }
+
 " Scheme
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
@@ -692,6 +695,10 @@ au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 
 " ~/.vim/after/ftplugin/scala.vim
 " }}}
+
+" vim-yapf {{{
+autocmd FileType python nnoremap <leader>y :call Yapf()<cr>
+" "}}}
 
 " Customization {{{
 set fileencodings=utf-8,euc-kr,default
