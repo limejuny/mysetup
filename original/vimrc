@@ -79,6 +79,7 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
+Plug 'jreybert/vimagit'
 
 " Bars, panels, and files
 Plug 'scrooloose/nerdtree'
