@@ -7,6 +7,9 @@ else
   if [ ! -d backup ]; then
     mkdir backup
   fi
+  if [ ! -d ~/.peco ]; then
+    mkdir ~/.peco
+  fi
   cat list.txt | awk '{print "cp", $2, "./backup/"$1}' | sh -x
   cat list.txt | awk '{print "cp", "./original/"$1, $2}' | sh -x
   gem install solargraph
