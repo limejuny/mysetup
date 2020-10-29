@@ -43,3 +43,21 @@ fshow() {
 FZF-EOF"
 }
 # }}}
+
+# fif - find in file
+fif() {
+  if [ ! "$#" -gt 0 ]; then echo "검색어를 입력해주세요."; return 1; fi
+  rg --files-with-matches --no-messages $2 "$1" | fzf\
+  --border\
+  --height 80%\
+  --extended\
+  --ansi\
+  --reverse\
+  --cycle\
+  --bind 'f1:execute(bat -f {})'\
+  --bind 'alt-p:preview-up,alt-n:preview-down'\
+  --bind 'ctrl-u:half-page-up,ctrl-d:half-page-down'\
+  --bind '?:toggle-preview,alt-w:toggle-preview-wrap'\
+  --bind 'alt-v:execute(vim {} >/dev/tty </dev/tty)'\
+  --preview "cat {} | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
