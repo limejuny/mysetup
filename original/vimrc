@@ -107,6 +107,7 @@ Plug 'ycm-core/YouCompleteMe'
 cnoreabbrev gt YcmComplete GoTo
 Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
+Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
@@ -572,6 +573,8 @@ augroup LanguageClient
   autocmd FileType ruby nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
   autocmd FileType ruby nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 augroup END
+
+autocmd FileType ruby let g:rufo_auto_formatting = 1
 
 " }}}
 
