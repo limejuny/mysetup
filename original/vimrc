@@ -574,7 +574,7 @@ augroup LanguageClient
   autocmd FileType ruby nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 augroup END
 
-autocmd FileType ruby let g:rufo_auto_formatting = 1
+" autocmd FileType ruby let g:rufo_auto_formatting = 1
 
 " }}}
 
