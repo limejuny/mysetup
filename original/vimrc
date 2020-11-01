@@ -104,7 +104,8 @@ Plug 'vim-scripts/wombat256.vim'
 
 " Autocomplete
 Plug 'ycm-core/YouCompleteMe'
-cnoreabbrev gt YcmComplete GoTo
+" cnoreabbrev gt YcmComplete GoTo
+nmap <leader>gt :YcmComplete GoTo<CR>
 Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
