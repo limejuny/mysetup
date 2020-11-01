@@ -205,7 +205,10 @@ if &term =~ '256color'
 endif
 
 " Force redraw
-map <silent> <leader>r :redraw!<CR>
+" map <silent> <leader>r :redraw!<CR>
+
+" View registers
+nmap <leader>rr :reg<CR>
 
 " Turn mouse mode on
 nnoremap <leader>ma :set mouse=a<cr>
