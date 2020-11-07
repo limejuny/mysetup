@@ -5,6 +5,8 @@ function fcd {
   cd $(find $argv -type d | fzf)
 }
 
+alias fd='fdfind'
+
 alias ts='tmuxinator start'
 alias tn='tmuxinator new'
 alias te='tmuxinator edit'
