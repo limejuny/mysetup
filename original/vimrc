@@ -243,10 +243,10 @@ endif
 nnoremap <leader>ss :Startify<cr>
 
 " Moving cursor in insert mode
-imap <C-h> <Esc>h
-imap <C-j> <Esc>j
-imap <C-k> <Esc>k
-imap <C-l> <Esc>l
+imap <C-h> <Esc>hi
+imap <C-j> <Esc>jli
+imap <C-k> <Esc>kli
+imap <C-l> <Esc>lli
 
 " }}}
 
