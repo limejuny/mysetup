@@ -716,7 +716,7 @@ au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 " }}}
 
 " Formatter {{{
-autocmd FileType python nnoremap <leader>y :call Yapf --style google<cr>
+autocmd FileType python nnoremap <leader>y :call Yapf('--style google')<cr>
 autocmd FileType json nnoremap <leader>y :%!python -m json.tool<cr>
 " "}}}
 
