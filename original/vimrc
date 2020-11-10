@@ -715,8 +715,9 @@ au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 " ~/.vim/after/ftplugin/scala.vim
 " }}}
 
-" vim-yapf {{{
-autocmd FileType python nnoremap <leader>y :call Yapf()<cr>
+" Formatter {{{
+autocmd FileType python nnoremap <leader>y :call Yapf --style google<cr>
+autocmd FileType json nnoremap <leader>y :%!python -m json.tool<cr>
 " "}}}
 
 " WSL {{{
