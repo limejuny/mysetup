@@ -4,3 +4,4 @@ tmux.conf ~/.tmux.conf
 cleanup ~/.cleanup
 python.vim ~/.vim/after/ftplugin/python.vim
 pecoconfig ~/.peco/config.json
+flake8 ~/.config/flake8

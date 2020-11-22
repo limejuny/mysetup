@@ -121,6 +121,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Python
 Plug 'mindriot101/vim-yapf', { 'for': 'python' }
+Plug 'nvie/vim-flake8'
 
 " Scheme
 Plug 'guns/vim-sexp'
@@ -717,6 +718,9 @@ au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 
 " Formatter {{{
 autocmd FileType python nnoremap <leader>y :call Yapf('--style google')<cr>
+autocmd FileType python map <buffer> <F3> :call Flake8()<cr>
+let g:flake8_show_in_file=1
+let g:flake8_max_markers=500
 autocmd FileType json nnoremap <leader>y :%!python -m json.tool<cr>
 " "}}}
 
