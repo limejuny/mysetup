@@ -8,8 +8,9 @@ function fcd {
 alias fd='fdfind'
 
 alias ts='tmuxinator start'
-alias tn='tmuxinator new'
 alias te='tmuxinator edit'
+alias tn='tmux new -s'
+alias ta='tmux attach -t'
 
 # {{{ fzf.git
 fbr() {
