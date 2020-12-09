@@ -17,6 +17,7 @@ else
   gem install rufo
   sudo apt install bat
   sudo apt install fd-find
+  sudo apt install shellcheck
   solargraph download-core
   echo "========================"
   echo ":CocInstall coc-metals"
