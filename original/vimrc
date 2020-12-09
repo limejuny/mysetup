@@ -600,8 +600,8 @@ nmap <leader>wi <Plug>VimwikiDiaryIndex
 nmap <leader>w<leader>w <Plug>VimwikiMakeDiaryNote
 nmap <leader>wt :VimwikiTable<CR>
 
-nnoremap <F4> :execute "VWS /" . expand("<cword>") . "/" <Bar> :lopen<CR>
-nnoremap <S-F4> :execute "VWB" <Bar> :lopen<CR>
+autocmd FileType vimwiki nnoremap <F4> :execute "VWS /" . expand("<cword>") . "/" <Bar> :lopen<CR>
+autocmd FileType vimwiki nnoremap <S-F4> :execute "VWB" <Bar> :lopen<CR>
 
 function! LastModified()
   if &modified
@@ -721,6 +721,7 @@ autocmd FileType python nnoremap <leader>y :call Yapf('--style google')<cr>
 autocmd FileType python map <buffer> <F3> :call Flake8()<cr>
 let g:flake8_show_in_file=1
 let g:flake8_max_markers=500
+autocmd FileType python map <buffer> <F9> :!clear; python %<cr>
 autocmd FileType json nnoremap <leader>y :%!python -m json.tool<cr>
 " "}}}
 
