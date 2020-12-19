@@ -106,6 +106,8 @@ Plug 'vim-scripts/wombat256.vim'
 Plug 'ycm-core/YouCompleteMe'
 " cnoreabbrev gt YcmComplete GoTo
 nmap <leader>gt :YcmComplete GoTo<CR>
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" autocmd FileType python let b:coc_root_patterns = ['venv']
 Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
