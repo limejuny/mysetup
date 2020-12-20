@@ -7,10 +7,10 @@ set foldnestmax=5
 set foldcolumn=0
 
 augroup vimrcFold
-	" fold vimrc itself by categories
-	autocmd!
-	autocmd FileType vim set foldmethod=marker
-	autocmd FileType vim set foldlevel=0
+  " fold vimrc itself by categories
+  autocmd!
+  autocmd FileType vim set foldmethod=marker
+  autocmd FileType vim set foldlevel=0
 augroup END
 
 " Set to auto read when a file is changed from the outside
@@ -103,20 +103,21 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'vim-scripts/wombat256.vim'
 
 " Autocomplete
-Plug 'ycm-core/YouCompleteMe'
-" cnoreabbrev gt YcmComplete GoTo
-nmap <leader>gt :YcmComplete GoTo<CR>
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" autocmd FileType python let b:coc_root_patterns = ['venv']
-Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
-Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
-Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-Plug 'Shougo/neocomplete.vim'
-Plug 'osyo-manga/vim-monster'
+" Plug 'ycm-core/YouCompleteMe'
+" " cnoreabbrev gt YcmComplete GoTo
+" nmap <leader>gt :YcmComplete GoTo<CR>
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" :CocInstall coc-metals coc-json
+autocmd FileType python let b:coc_root_patterns = ['venv']
+" Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
+" Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
+" Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
+" Plug 'autozimu/LanguageClient-neovim', {
+"       \ 'branch': 'next',
+"       \ 'do': 'bash install.sh',
+"       \ }
+" Plug 'Shougo/neocomplete.vim'
+" Plug 'osyo-manga/vim-monster'
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -378,9 +379,9 @@ nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 augroup last_edit
   autocmd!
   autocmd BufReadPost *
-       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-       \   exe "normal! g`\"" |
-       \ endif
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
 augroup END
 " Remember info about open buffers on close
 set viminfo^=%
@@ -592,7 +593,7 @@ let g:vimwiki_list = [
       \   'ext' : '.md',
       \   'diary_rel_path': '.',
       \ },
-\]
+      \]
 let g:vimwiki_conceallevel = 0
 let g:vimwiki_global_ext = 0
 
@@ -669,10 +670,10 @@ augroup END
 let g:tagbar_type_markdown = {
       \ 'ctagstype' : 'markdown',
       \ 'kinds' : [
-        \ 'h:headings',
-        \ 'l:links',
-        \ 'i:images'
-        \ ],
+      \ 'h:headings',
+      \ 'l:links',
+      \ 'i:images'
+      \ ],
       \ 'sort' : 0
       \ }
 let g:tagbar_type_vimwiki = {
@@ -680,9 +681,9 @@ let g:tagbar_type_vimwiki = {
       \ 'ctagsbin' : '~/.local/bin/markdown2ctags.py',
       \ 'ctagsargs' : '-f - --sort=yes --sro=»',
       \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-        \ ],
+      \ 's:sections',
+      \ 'i:images'
+      \ ],
       \ 'sro' : '»',
       \ 'kind2scope' : { 's' : 'section' },
       \ 'sort' : 0
@@ -747,6 +748,7 @@ set fileencodings=utf-8,euc-kr,default
 set runtimepath^=~/.vim/bundle/vim-erlang-omnicomplete
 
 let delimitMate_expand_cr=1
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " let g:coc_disable_startup_warning = 1
 
