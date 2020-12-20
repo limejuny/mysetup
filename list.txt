@@ -5,3 +5,4 @@ cleanup ~/.cleanup
 python.vim ~/.vim/after/ftplugin/python.vim
 pecoconfig ~/.peco/config.json
 flake8 ~/.config/flake8
+init.vim ~/.config/nvim/init.vim
