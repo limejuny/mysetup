@@ -8,5 +8,11 @@
   "codeLens.enable": true,
   "signature.enable": true,
   "suggest.preferCompleteThanJumpPlaceholder": true,
-  "coc.preferences.formatOnType": true
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "scala",
+    "ruby",
+    "eruby",
+    "json"
+  ]
 }

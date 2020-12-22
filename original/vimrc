@@ -109,6 +109,8 @@ augroup plug_xtype
 augroup END
 " cnoreabbrev gt YcmComplete GoTo
 nmap <leader>gt :YcmComplete GoTo<CR>
+Plug 'neoclide/coc.nvim', { 'for': [ 'ruby', 'eruby', 'scala', 'json' ], 'branch': 'release' }
+" :CocInstall coc-metals coc-json
 " autocmd FileType python let b:coc_root_patterns = ['venv']
 Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
@@ -744,9 +746,6 @@ endif
 " }}}
 
 " coc.nvim {{{
-Plug 'neoclide/coc.nvim', { 'for': [ 'ruby', 'eruby', 'scala', 'json' ], 'branch': 'release' }
-" :CocInstall coc-metals coc-json
-
 " Use <c-space> to trigger completion.
 autocmd FileType scala,ruby,eruby,json inoremap <silent><expr> <c-space> coc#refresh()
 " }}}
