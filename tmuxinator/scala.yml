@@ -1,7 +1,7 @@
 # /home/loonatic/.config/tmuxinator/scala.yml
 
 name: scala
-root: ~/scala/study
+root: ~/scala/test
 
 # Optional tmux socket
 # socket_name: foo
