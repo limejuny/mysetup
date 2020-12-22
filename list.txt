@@ -7,3 +7,4 @@ scala.vim ~/.vim/after/ftplugin/scala.vim
 pecoconfig ~/.peco/config.json
 flake8 ~/.config/flake8
 init.vim ~/.config/nvim/init.vim
+coc-settings.json ~/.config/nvim/coc-settings.json
