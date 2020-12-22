@@ -103,15 +103,15 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'vim-scripts/wombat256.vim'
 
 " Autocomplete
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', { 'for': [ 'python', 'c', 'cpp', 'go' ] }
 " cnoreabbrev gt YcmComplete GoTo
 nmap <leader>gt :YcmComplete GoTo<CR>
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'for': [ 'ruby', 'eruby', 'scala' ], 'branch': 'release' }
 " :CocInstall coc-metals coc-json
 " autocmd FileType python let b:coc_root_patterns = ['venv']
-" Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
-" Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
-" Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
+Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
+Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
+Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
 " Plug 'autozimu/LanguageClient-neovim', {
 "       \ 'branch': 'next',
 "       \ 'do': 'bash install.sh',
@@ -133,7 +133,6 @@ Plug 'Olical/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
 
 " Scala
 Plug 'derekwyatt/vim-scala'
-Plug 'neoclide/coc.nvim', { 'for': 'scala', 'branch': 'release' }
 
 " Custom bundles
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
@@ -741,6 +740,11 @@ let powershell = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe'
 if executable(powershell)
   nmap <leader>cc :call system(powershell.' -NoLogo -NoProfile -Command "Set-Clipboard -Value \$null"')<CR>
 endif
+" }}}
+
+" coc.nvim {{{
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
 " }}}
 
 " Customization {{{
