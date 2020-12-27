@@ -105,7 +105,7 @@ Plug 'vim-scripts/wombat256.vim'
 " Autocomplete
 Plug 'ycm-core/YouCompleteMe', { 'for': [] }
 augroup plug_xtype
-  autocmd FileType * if index(['ruby', 'eruby', 'scala'], expand('<amatch>')) == -1 | call plug#load('YouCompleteMe') | execute 'autocmd! plug_xtype' | endif
+  autocmd FileType * if index(['ruby', 'eruby', 'scala', 'json'], expand('<amatch>')) == -1 | call plug#load('YouCompleteMe') | execute 'autocmd! plug_xtype' | endif
 augroup END
 " cnoreabbrev gt YcmComplete GoTo
 nmap <leader>gt :YcmComplete GoTo<CR>
