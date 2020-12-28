@@ -103,16 +103,26 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'vim-scripts/wombat256.vim'
 
 " Autocomplete
-Plug 'ycm-core/YouCompleteMe', { 'for': [] }
-augroup plug_xtype
-  autocmd FileType * if index(['ruby', 'eruby', 'scala', 'json'], expand('<amatch>')) == -1 | call plug#load('YouCompleteMe') | execute 'autocmd! plug_xtype' | endif
-augroup END
+Plug 'ycm-core/YouCompleteMe', { 'for': [ 'python' ] }
+" augroup plug_xtype
+"   autocmd FileType * if index(['ruby', 'eruby', 'scala', 'json'], expand('<amatch>')) == -1 | call plug#load('YouCompleteMe') | execute 'autocmd! plug_xtype' | endif
+" augroup END
 " cnoreabbrev gt YcmComplete GoTo
-nmap <leader>gt :YcmComplete GoTo<CR>
+autocmd FileType python nmap <leader>gt :YcmComplete GoTo<CR>
 Plug 'neoclide/coc.nvim', { 'for': [ 'ruby', 'eruby', 'scala', 'json' ], 'branch': 'release' }
-" :CocInstall coc-metals coc-json
+augroup plug_xtype
+  autocmd FileType * if index(['python'], expand('<amatch>')) == -1 | call plug#load('coc.nvim') | execute 'autocmd! plug_xtype' | endif
+augroup END
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+autocmd FileType * if index(['python'], expand('<amatch>')) == -1 | inoremap <silent><expr><c-space> coc#refresh() | endif
+" " :CocInstall coc-metals coc-json coc-sh coc-clangd coc-go coc-solargraph
+" " :CocCommand clangd.install
+" " https://github.com/neoclide/coc.nvim/wiki/Language-servers
 " autocmd FileType python let b:coc_root_patterns = ['venv']
-Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
+" Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
 " Plug 'autozimu/LanguageClient-neovim', {
