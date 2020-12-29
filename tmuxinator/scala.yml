@@ -39,13 +39,14 @@ root: ~/scala/test
 startup_window: main
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-startup_pane: 1
+# startup_pane: 1
+startup_pane: 0
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
 windows:
-  - editor:
+  - repl:
   - terminal:
   - main:
       # layout: 6ace,269x54,0,0{120x54,0,0,0,148x54,121,0,1}
