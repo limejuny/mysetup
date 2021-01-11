@@ -46,7 +46,7 @@ startup_pane: 0
 # attach: false
 
 windows:
-  - repl:
+  - repl: scala
   - terminal:
   - main:
       # layout: 6ace,269x54,0,0{120x54,0,0,0,148x54,121,0,1}
