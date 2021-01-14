@@ -1,7 +1,7 @@
 # /home/loonatic/.config/tmuxinator/scala.yml
 
 name: scala
-root: ~/scala/test
+root: ~/scala/playproject
 
 # Optional tmux socket
 # socket_name: foo
@@ -55,4 +55,5 @@ windows:
       # # synchronize: after
       # panes:
       #   - 
-        - vim
+        - vi
+  - mariadb: mariadb
