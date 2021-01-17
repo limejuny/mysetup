@@ -48,7 +48,7 @@ startup_pane: 0
 windows:
   - repl: scala
   - terminal:
-  - main:
+  - editor:
       # layout: 6ace,269x54,0,0{120x54,0,0,0,148x54,121,0,1}
       # # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
@@ -57,3 +57,4 @@ windows:
       #   - 
         - vi
   - mariadb: mariadb
+  - server: sbt run
