@@ -8,3 +8,4 @@ pecoconfig ~/.peco/config.json
 flake8 ~/.config/flake8
 init.vim ~/.config/nvim/init.vim
 coc-settings.json ~/.config/nvim/coc-settings.json
+coc.vim ~/.vim/after/plugin/coc.vim

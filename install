@@ -13,7 +13,8 @@ else
   cat list.txt | awk '{print "cp", $2, "./backup/"$1}' | sh -x
   cat list.txt | awk '{print "cp", "./original/"$1, $2}' | sh -x
   mkdir -p ~/.config/nvim/after
-  ln -s ~/.vim/after/ftplugin ~/.config/nvim/after
+  rm -r ~/.config/nvim/after
+  ln -s ~/.vim/after ~/.config/nvim/after
   gem install solargraph
   gem install tmuxinator
   gem install rufo
