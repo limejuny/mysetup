@@ -21,6 +21,13 @@ else
   sudo apt install fd-find
   sudo apt install shellcheck
   solargraph download-core
+  # coursier {{{
+  curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)"
+  chmod +x cs
+  ./cs install cs
+  ./cs install scalafmt
+  rm cs
+  # }}}
   echo "========================"
   echo ":CocInstall coc-metals"
   echo "set -o vi (/etc/bash.bashrc)"

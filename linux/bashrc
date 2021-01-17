@@ -1,4 +1,5 @@
 alias exp='explorer.exe .'
+export PATH=$HOME/.rbenv/bin:$PATH:$GOPATH/bin:$HOME/.local/share/coursier/bin
 set -o vi
 export EDITOR=/usr/bin/vi
 function fcd {
