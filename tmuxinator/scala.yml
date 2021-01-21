@@ -56,5 +56,5 @@ windows:
       # panes:
       #   - 
         - vi
-  - mariadb: mariadb
   - server: sbt run
+  - mariadb: mariadb
