@@ -112,13 +112,6 @@ Plug 'vim-scripts/wombat256.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " Plug 'neoclide/coc.nvim', { 'for': [ 'ruby', 'eruby', 'scala', 'json' ], 'branch': 'release' }
 " augroup plug_xtype
-"   autocmd FileType * if index(['python'], expand('<amatch>')) == -1 | call plug#load('coc.nvim') | execute 'autocmd! plug_xtype' | endif
-" augroup END
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-" autocmd FileType * if index(['python'], expand('<amatch>')) == -1 | inoremap <silent><expr><c-space> coc#refresh() | endif
 " " :CocInstall coc-metals coc-json coc-sh coc-clangd coc-go coc-solargraph
 " " :CocCommand clangd.install
 " " https://github.com/neoclide/coc.nvim/wiki/Language-servers
