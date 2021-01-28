@@ -730,8 +730,8 @@ autocmd FileType python nnoremap <leader>y :call Yapf('--style google')<cr>
 autocmd FileType python map <buffer> <F3> :call Flake8()<cr>
 let g:flake8_show_in_file=1
 let g:flake8_max_markers=500
-autocmd FileType python map <buffer> <F9> :!clear; python %<cr>
-autocmd FileType json nnoremap <leader>y :%!python -m json.tool<cr>
+autocmd FileType python map <buffer> <F9> :!python %<cr>
+" autocmd FileType json nnoremap <leader>y :%!python -m json.tool<cr>
 " "}}}
 
 " WSL {{{
