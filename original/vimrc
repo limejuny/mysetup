@@ -148,6 +148,7 @@ Plug 'ludovicchabant/vim-gutentags', { 'for': ['vimwiki', 'markdown'] }
 Plug 'jszakmeister/markdown2ctags', {'do' : 'cp ./markdown2ctags.py ~/.local/bin/markdown2ctags.py'}
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
+Plug 'vim-scripts/HTML-AutoCloseTag'
 
 call plug#end()
 " }}}
