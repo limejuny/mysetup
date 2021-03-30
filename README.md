@@ -16,8 +16,9 @@ $ ./install restore
 ## 메모
 * tmux, fzf, peco 설치
 * ~/.config/tmuxinator에 파일 복사
-* vim-gtk를 설치해야지 "+y로 복사 가능 (neovim 받기 귀찮음)
-* sudo update-alternatives --config editor -> vim으로 바꾸기
+* ~~vim-gtk를 설치해야지 "+y로 복사 가능 (neovim 받기 귀찮음)~~
+* sudo update-alternatives --config editor -> neovim으로 바꾸기
+* vi->neovim, vim->vim.nox로 alias하고 nvim으로는 coc.nvim, vim으로는 ycm 사용
 * 저장소 미러서버 바꾸기
   ```
   apt서버
