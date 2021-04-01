@@ -14,14 +14,13 @@ else
   cat list.txt | awk '{print "cp", "./original/"$1, $2}' | sh -x
   mkdir -p ~/.config/nvim/after
   rm -r ~/.config/nvim/after
-  ln -s ~/.vim/after ~/.config/nvim/after
-  gem install solargraph
-  gem install tmuxinator
-  gem install rufo
-  sudo apt install bat
-  sudo apt install fd-find
-  sudo apt install shellcheck
+  ln -s $HOME/.vim/after $HOME/.config/nvim/after
+  gem install pry pry-doc tmuxinator solargraph rufo
+  sudo apt install bat fd-find shellcheck net-tools
   solargraph download-core
+  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+  python3 get-pip.py
+
   # coursier {{{
   curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)"
   chmod +x cs
@@ -29,7 +28,10 @@ else
   ./cs install scalafmt
   rm cs
   # }}}
+
   echo "========================"
-  echo ":CocInstall coc-metals"
+  echo "https://github.com/nvm-sh/nvm"
+  echo "https://golang.org/doc/install"
+  echo "https://docs.docker.com/engine/install/ubuntu/"
   echo "set -o vi (/etc/bash.bashrc)"
 fi

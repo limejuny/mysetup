@@ -24,9 +24,4 @@ $ ./install restore
   apt서버
   $ sudo sed -i 's/kr.archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list # 한국
   $ sudo sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list # 미국
-  = = =
-  pip서버
-  $ echo "[global]
-  index-url=http://mirror.kakao.com/pypi/simple
-  trusted-host=mirror.kakao.com" > ~/.pip/pip.conf
   ```
