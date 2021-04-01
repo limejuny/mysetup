@@ -55,8 +55,8 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 filetype plugin indent on
 autocmd FileType ruby,eruby compiler ruby
 " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby set completefunc=LanguageClient#complete
-cnoreabbrev vt vert term
+" autocmd FileType ruby,eruby set completefunc=LanguageClient#complete
+" cnoreabbrev vt vert term
 
 " }}}
 
@@ -103,28 +103,25 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'vim-scripts/wombat256.vim'
 
 " Autocomplete
-" Plug 'ycm-core/YouCompleteMe', { 'for': [ 'python' ] }
-" augroup plug_xtype
-"   autocmd FileType * if index(['ruby', 'eruby', 'scala', 'json'], expand('<amatch>')) == -1 | call plug#load('YouCompleteMe') | execute 'autocmd! plug_xtype' | endif
-" augroup END
-" cnoreabbrev gt YcmComplete GoTo
-" autocmd FileType python nmap <leader>gt :YcmComplete GoTo<CR>
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" Plug 'neoclide/coc.nvim', { 'for': [ 'ruby', 'eruby', 'scala', 'json' ], 'branch': 'release' }
-" augroup plug_xtype
-" " :CocInstall coc-metals coc-json coc-sh coc-clangd coc-go coc-solargraph
-" " :CocCommand clangd.install
-" " https://github.com/neoclide/coc.nvim/wiki/Language-servers
-autocmd FileType python let b:coc_root_patterns = ['venv']
+if !has('nvim')
+  Plug 'ycm-core/YouCompleteMe', { 'for': [ 'python' ] }
+  autocmd FileType python nmap <leader>gt :YcmComplete GoTo<CR>
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "       \ 'branch': 'next',
+  "       \ 'do': 'bash install.sh',
+  "       \ }
+  " Plug 'Shougo/neocomplete.vim'
+  " Plug 'osyo-manga/vim-monster'
+else
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  " " :CocInstall coc-metals coc-json coc-sh coc-clangd coc-go coc-solargraph
+  " " :CocCommand clangd.install
+  " " https://github.com/neoclide/coc.nvim/wiki/Language-servers
+  autocmd FileType python let b:coc_root_patterns = ['venv']
+endif
 " Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
-" Plug 'autozimu/LanguageClient-neovim', {
-"       \ 'branch': 'next',
-"       \ 'do': 'bash install.sh',
-"       \ }
-" Plug 'Shougo/neocomplete.vim'
-" Plug 'osyo-manga/vim-monster'
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -142,10 +139,10 @@ Plug 'Olical/vim-scheme', { 'for': 'scheme', 'on': 'SchemeConnect' }
 Plug 'derekwyatt/vim-scala'
 
 " Custom bundles
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'mhinz/vim-startify'
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['vimwiki', 'markdown'] }
-Plug 'jszakmeister/markdown2ctags', {'do' : 'cp ./markdown2ctags.py ~/.local/bin/markdown2ctags.py'}
+" Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+" Plug 'ludovicchabant/vim-gutentags', { 'for': ['vimwiki', 'markdown'] }
+" Plug 'jszakmeister/markdown2ctags', {'do' : 'cp ./markdown2ctags.py ~/.local/bin/markdown2ctags.py'}
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
 Plug 'vim-scripts/HTML-AutoCloseTag'
@@ -337,12 +334,7 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 nmap <silent> <leader>u :MundoToggle<CR>
 
 " Fuzzy find files
-" nnoremap <silent> <Leader><space> :CtrlP<CR>
-" nnoremap <silent> <Leader><space> :Files<CR>
 nnoremap <silent> <Leader><space> :FZF<CR>
-" let g:ctrlp_max_files=0
-" let g:ctrlp_show_hidden=1
-" let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 
 " }}}
 
@@ -559,160 +551,6 @@ let g:SuperTabDefaultCompletionType = '<c-x><c-n>'
 
 " }}}
 
-" LanguageClient{{{
-" Tell the language client to use the default IP and port
-" that Solargraph runs on
-let g:LanguageClient_serverCommands = {
-      \ 'ruby': ['solargraph', 'stdio'],
-      \ 'scala': ['metals-vim'],
-      \ }
-let g:monster#completion#backend = 'solargraph'
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#omni#input_patterns = {
-      \ "ruby" : '[^. *\t]\.\w*\|\h\w*::',
-      \ }
-
-" Don't send a stop signal to the server when exiting vim.
-" This is optional, but I don't like having to restart Solargraph
-" every time I restart vim.
-" let g:LanguageClient_autoStop = 0
-
-" Configure ruby omni-completion to use the language client:
-augroup LanguageClient
-  autocmd!
-  autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
-
-  autocmd FileType ruby nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  autocmd FileType ruby nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  autocmd FileType ruby nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  autocmd FileType ruby nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-augroup END
-
-" autocmd FileType ruby let g:rufo_auto_formatting = 1
-
-" }}}
-
-" Vimwiki {{{
-let g:vimwiki_list = [
-      \ {
-      \   'path': '/home/loonatic/src/eggmoid.github.io/_wiki/',
-      \   'ext' : '.md',
-      \   'diary_rel_path': '.',
-      \ },
-      \]
-let g:vimwiki_conceallevel = 0
-let g:vimwiki_global_ext = 0
-
-command! WikiIndex :VimwikiIndex
-nmap <leader>ww <Plug>VimwikiIndex
-nmap <leader>wi <Plug>VimwikiDiaryIndex
-nmap <leader>w<leader>w <Plug>VimwikiMakeDiaryNote
-nmap <leader>wt :VimwikiTable<CR>
-
-autocmd FileType vimwiki nnoremap <F4> :execute "VWS /" . expand("<cword>") . "/" <Bar> :lopen<CR>
-autocmd FileType vimwiki nnoremap <S-F4> :execute "VWB" <Bar> :lopen<CR>
-
-function! LastModified()
-  if &modified
-    let save_cursor = getpos(".")
-    let n = min([10, line("$")])
-    keepjumps exe '1,' . n . 's#^\(.\{,10}updated\s*: \).*#\1' .
-          \ strftime('%Y-%m-%d %H:%M:%S +0900') . '#e'
-    call histdel('search', -1)
-    call setpos('.', save_cursor)
-  endif
-endfun
-
-function! NewTemplate()
-  let l:wiki_directory = v:false
-
-  for wiki in g:vimwiki_list
-    if expand('%:p:h') . '/' == wiki.path
-      let l:wiki_directory = v:true
-      break
-    endif
-  endfor
-
-  if !l:wiki_directory
-    return
-  endif
-
-  if line("$") > 1
-    return
-  endif
-
-  let l:template = []
-  call add(l:template, '---')
-  call add(l:template, 'layout  : wiki')
-  call add(l:template, 'title   : ')
-  call add(l:template, 'summary : ')
-  call add(l:template, 'date    : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
-  call add(l:template, 'updated : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
-  call add(l:template, 'tags    : ')
-  call add(l:template, 'toc     : true')
-  call add(l:template, 'public  : true')
-  call add(l:template, 'parent  : ')
-  call add(l:template, 'latex   : false')
-  call add(l:template, '---')
-  call add(l:template, '* TOC')
-  call add(l:template, '{:toc}')
-  call add(l:template, '')
-  call add(l:template, '# ')
-  call setline(1, l:template)
-  execute 'normal! G'
-  execute 'normal! $'
-
-  echom 'new wiki page has created'
-endfunction
-
-autocmd BufWritePre *.md call LastModified()
-autocmd BufRead,BufNewFile *.md call NewTemplate()
-
-augroup vimwikiauto
-  autocmd BufWritePre *wiki/*.md call LastModified()
-  autocmd BufRead,BufNewFile *wiki/*.md call NewTemplate()
-augroup END
-
-let g:tagbar_type_markdown = {
-      \ 'ctagstype' : 'markdown',
-      \ 'kinds' : [
-      \ 'h:headings',
-      \ 'l:links',
-      \ 'i:images'
-      \ ],
-      \ 'sort' : 0
-      \ }
-let g:tagbar_type_vimwiki = {
-      \ 'ctagstype' : 'vimwiki',
-      \ 'ctagsbin' : '~/.local/bin/markdown2ctags.py',
-      \ 'ctagsargs' : '-f - --sort=yes --sro=»',
-      \ 'kinds' : [
-      \ 's:sections',
-      \ 'i:images'
-      \ ],
-      \ 'sro' : '»',
-      \ 'kind2scope' : { 's' : 'section' },
-      \ 'sort' : 0
-      \ }
-autocmd Filetype vimwiki let g:ycm_filetype_blacklist = {
-      \ 'vimwiki': 1
-      \}
-autocmd FileType vimwiki imap <F2> ## 
-autocmd FileType vimwiki map <F2> i## 
-
-" default header key unmappings (~/.vim/bundle/vimwiki/ftplugin/vimwiki.vim #line:707)
-autocmd FileType vimwiki nunmap <buffer> =
-autocmd FileType vimwiki nunmap <buffer> -
-autocmd FileType vimwiki nunmap <buffer> ]u
-autocmd FileType vimwiki nunmap <buffer> [u
-autocmd FileType vimwiki nunmap <buffer> ]]
-autocmd FileType vimwiki nunmap <buffer> [[
-autocmd FileType vimwiki nunmap <buffer> ]=
-autocmd FileType vimwiki nunmap <buffer> [=
-
-" }}}
-
 " vim-scheme {{{
 let g:scheme_split_size = -10
 let g:scheme_executable = "racket"
@@ -732,7 +570,6 @@ autocmd FileType python map <buffer> <F3> :call Flake8()<cr>
 let g:flake8_show_in_file=1
 let g:flake8_max_markers=500
 autocmd FileType python map <buffer> <F9> :!python %<cr>
-" autocmd FileType json nnoremap <leader>y :%!python -m json.tool<cr>
 " "}}}
 
 " WSL {{{
@@ -748,11 +585,6 @@ let powershell = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe'
 if executable(powershell)
   nmap <leader>cc :call system(powershell.' -NoLogo -NoProfile -Command "Set-Clipboard -Value \$null"')<CR>
 endif
-" }}}
-
-" coc.nvim {{{
-" " Use <c-space> to trigger completion.
-" autocmd FileType scala,ruby,eruby,json inoremap <silent><expr> <c-space> coc#refresh()
 " }}}
 
 " Customization {{{
