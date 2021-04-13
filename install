@@ -12,6 +12,8 @@ else
   fi
   cat list.txt | awk '{print "cp", $2, "./backup/"$1}' | sh -x
   cat list.txt | awk '{print "cp", "./original/"$1, $2}' | sh -x
+  mkdir -p $HOME/.vim/after/plugin
+  mkdir -p $HOME/.vim/after/ftplugin
   mkdir -p ~/.config/nvim/after
   rm -r ~/.config/nvim/after
   ln -s $HOME/.vim/after $HOME/.config/nvim/after

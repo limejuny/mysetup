@@ -146,6 +146,7 @@ Plug 'mhinz/vim-startify'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
 Plug 'vim-scripts/HTML-AutoCloseTag'
+Plug 'othree/xml.vim'
 
 call plug#end()
 " }}}
