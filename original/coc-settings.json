@@ -21,5 +21,6 @@
     "java"
   ],
   "clangd.path": "/home/loonatic/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
-  "java.home": "/usr/lib/jvm/java"
+  "java.home": "/home/ubuntu/.sdkman/candidates/java/current",
+  "java.jdt.ls.vmargs": "-javaagent:/home/ubuntu/bin/lombok/lombok.jar"
 }
