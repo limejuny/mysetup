@@ -25,3 +25,8 @@ $ ./install restore
   $ sudo sed -i 's/kr.archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list # 한국
   $ sudo sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list # 미국
   ```
+
+## coc-settings.json 자동완성 이상할때
+1. `./original/package-lock.json`을 `~/.config/coc/extensions/node_modules/coc-json`에 복사
+2. `$ cd ~/.config/coc/extensions/node_modules/coc-json`
+3. `$ npm install --ignore-scripts --no-lockfile --production --legacy-peer-deps`
