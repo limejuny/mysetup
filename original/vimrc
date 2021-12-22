@@ -568,6 +568,7 @@ au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
 " }}}
 
 " vimwiki {{{
+" LastModified {{{
 function! LastModified()
   if g:md_modify_disabled
     return
@@ -587,7 +588,8 @@ function! LastModified()
     call setpos('.', save_cursor)
   endif
 endfun
-
+" }}}
+" NewTemplate {{{
 function! NewTemplate()
   let l:wiki_directory = v:false
 
@@ -629,10 +631,53 @@ function! NewTemplate()
 
   echom 'new wiki page has created'
 endfunction
+" }}}
+" NewBlogTemplate {{{
+function! NewBlogTemplate()
+  let l:blog_directory = v:false
+
+  for blog in g:vimwiki_blog_list
+    if expand('%:p:h') =~ expand(blog.path)
+      let l:blog_directory = v:true
+      break
+    endif
+  endfor
+
+  if !l:blog_directory
+    return
+  endif
+
+  if line("$") > 1
+    return
+  endif
+
+  let l:template = []
+  call add(l:template, '---')
+  call add(l:template, 'layout  : post')
+  call add(l:template, 'title   : ' . strftime('%Y년 %m월 %d일 오늘의 일기'))
+  call add(l:template, 'summary : ')
+  call add(l:template, 'date    : ' . strftime('%Y-%m-%d %H:%M:%S +0900'))
+  call add(l:template, 'tag     : ')
+  call add(l:template, 'toc     : true')
+  call add(l:template, 'comment : true')
+  call add(l:template, 'public  : true')
+  call add(l:template, '---')
+  call add(l:template, '* TOC')
+  call add(l:template, '{:toc}')
+  call add(l:template, '')
+  call add(l:template, '# ')
+  call setline(1, l:template)
+  execute 'normal! G'
+  execute 'normal! $'
+
+  echom 'new blog page has created'
+endfunction
+" }}}
 
 augroup vimwikiauto
   autocmd BufWritePre *.md keepjumps call LastModified()
   autocmd BufRead,BufNewFile *.md call NewTemplate()
+  autocmd BufRead,BufNewFile *.md call NewBlogTemplate()
   autocmd FileType vimwiki inoremap <S-Right> <C-r>=vimwiki#tbl#kbd_tab()<CR>
   autocmd FileType vimwiki inoremap <S-Left> <Left><C-r>=vimwiki#tbl#kbd_shift_tab()<CR>
 augroup END
@@ -641,8 +686,13 @@ let wiki = {}
 let wiki.path = '~/eggmoid/_wiki'
 let wiki.ext = '.md'
 let wiki.diary_rel_path = '.'
+let blog = {}
+let blog.path = '~/eggmoid/_posts'
+let blog.ext = '.md'
+let blog.diary_rel_path = '.'
 
 let g:vimwiki_list = [wiki]
+let g:vimwiki_blog_list = [blog]
 let g:vimwiki_conceallevel = 0
 let g:vimwiki_global_ext = 0
 let g:md_modify_disabled = 0
