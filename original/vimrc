@@ -337,7 +337,9 @@ nmap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 nmap <silent> <leader>u :MundoToggle<CR>
 
 " Fuzzy find files
-nnoremap <silent> <Leader><space> :FZF<CR>
+" nnoremap <silent> <Leader><space> :FZF<CR>
+nnoremap <silent> <Leader><space> :Files<CR>
+nnoremap <silent> <Leader>R :Rg<CR>
 
 " }}}
 
@@ -696,6 +698,25 @@ let g:vimwiki_blog_list = [blog]
 let g:vimwiki_conceallevel = 0
 let g:vimwiki_global_ext = 0
 let g:md_modify_disabled = 0
+
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+            \ 'h:headings',
+            \ 'l:links',
+            \ 'i:images'
+        \ ],
+    \ "sort" : 0
+\ }
+let g:tagbar_type_vimwiki = {
+    \ 'ctagstype' : 'vimwiki',
+    \ 'kinds' : [
+            \ 'h:headings',
+            \ 'l:links',
+            \ 'i:images'
+        \ ],
+    \ "sort" : 0
+\ }
 " }}}
 
 " Formatter {{{
