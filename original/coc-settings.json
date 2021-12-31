@@ -22,5 +22,17 @@
   ],
   "clangd.path": "/home/loonatic/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
   "java.home": "/home/ubuntu/.sdkman/candidates/java/current",
-  "java.jdt.ls.vmargs": "-javaagent:/home/ubuntu/bin/lombok/lombok.jar"
+  "java.jdt.ls.vmargs": "-javaagent:/home/ubuntu/bin/lombok/lombok.jar",
+  "languageserver": {
+    "groovy": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "/home/ubuntu/src/groovy-language-server/build/libs/groovy-language-server-all.jar"
+      ],
+      "filetypes": [
+        "groovy"
+      ]
+    }
+  }
 }
