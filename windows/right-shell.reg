@@ -1,0 +1,167 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\01MenuCmd]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuCmd"
+"Icon"="cmd.exe"
+"MUIVerb"="여기에 명령 창 열기"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\02MenuPowerShell]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuPowerShell"
+"Icon"="powershell.exe"
+"MUIVerb"="여기에 파워쉘 창 열기"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\cmd]
+@="@shell32.dll,-8506"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\Powershell]
+@="@shell32.dll,-8508"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\Powershell\command]
+@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\WSL]
+@="@wsl.exe,-2"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\WSL\command]
+@="wsl.exe --cd \"%V\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]
+@="Open Windows Terminal Here"
+
+[HKEY_CLASSES_ROOT\Directory\shell]
+@="none"
+
+[HKEY_CLASSES_ROOT\Directory\shell\01MenuCmd]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuCmd"
+"Icon"="cmd.exe"
+"MUIVerb"="여기에 명령 창 열기"
+
+[HKEY_CLASSES_ROOT\Directory\shell\02MenuPowerShell]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuPowerShell"
+"Icon"="powershell.exe"
+"MUIVerb"="파워쉘"
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd]
+@="@shell32.dll,-8506"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_CLASSES_ROOT\Directory\shell\cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\find]
+"LegacyDisable"=""
+"SuppressionPolicy"=dword:00000080
+
+[HKEY_CLASSES_ROOT\Directory\shell\nvim-qt]
+@="Edit with Neovim"
+"Icon"="\"C:\\tools\\neovim\\Neovim\\bin\\nvim-qt.exe\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\nvim-qt\command]
+@="\"C:\\tools\\neovim\\Neovim\\bin\\nvim-qt.exe\" \"%1\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\Powershell]
+@="@shell32.dll,-8508"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_CLASSES_ROOT\Directory\shell\Powershell\command]
+@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
+
+[HKEY_CLASSES_ROOT\Directory\shell\WSL]
+@="@wsl.exe,-2"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\WSL\command]
+@="wsl.exe --cd \"%V\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\01MenuCmd]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuCmd"
+"Icon"="cmd.exe"
+"MUIVerb"="여기에 명령 창 열기"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\02MenuPowerShell]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuPowerShell"
+"Icon"="powershell.exe"
+"MUIVerb"="여기에 파워쉘 창 열기"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd]
+@="@shell32.dll,-8506"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Powershell]
+@="@shell32.dll,-8508"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Powershell\command]
+@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\WSL]
+@="@wsl.exe,-2"
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\WSL\command]
+@="wsl.exe --cd \"%V\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell]
+@="none"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\01MenuCmd]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuCmd"
+"Icon"="cmd.exe"
+"MUIVerb"="여기에 명령 창 열기"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\02MenuPowerShell]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuPowerShell"
+"Icon"="powershell.exe"
+"MUIVerb"="여기에 파워쉘 창 열기"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd]
+@="@shell32.dll,-8506"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\find]
+"LegacyDisable"=""
+"SuppressionPolicy"=dword:00000080
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Powershell]
+@="@shell32.dll,-8508"
+"Extended"=""
+"NoWorkingDirectory"=""
+"ShowBasedOnVelocityId"=dword:00639bc8
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Powershell\command]
+@="powershell.exe -noexit -command Set-Location -literalPath '%V'"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\WSL]
+@="@wsl.exe,-2"
+"NoWorkingDirectory"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\WSL\command]
+@="wsl.exe --cd \"%V\""
+
+
