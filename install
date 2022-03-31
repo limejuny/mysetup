@@ -49,7 +49,7 @@ else
   pip install yapf
 
   # nvim
-  sudo apt install vim-gtk neovim
+  sudo apt install vim-gtk neovim clangd
   sudo update-alternatives --config editor
   sudo update-alternatives --config vi
   sudo update-alternatives --config vim
