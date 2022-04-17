@@ -71,7 +71,7 @@ else
 
   cat list.txt | awk '{print "cp", $2, "./backup/"$1}' | sh -x
   cat list.txt | awk '{print "cp", "./original/"$1, $2}' | sh -x
-  sudo apt install ripgrep fd-find shellcheck net-tools
+  sudo apt install ripgrep fd-find shellcheck net-tools peco
   sudo apt install cmake
   solargraph download-core
 
