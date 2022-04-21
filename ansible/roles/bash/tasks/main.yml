@@ -1,0 +1,43 @@
+- name: Update /etc/bash.bashrc
+  become: true
+  blockinfile:
+    path: /etc/bash.bashrc
+    block: |
+        set -o vi
+        export EDITOR=vi
+
+- name: Update /etc/inputrc
+  become: true
+  blockinfile:
+    path: /etc/inputrc
+    block: |
+        set bell-style none
+
+- set_fact:
+    hosts_content: "{{ lookup('file', 'files/local.bashrc') }}"
+
+- name: Update local bashrc
+  blockinfile:
+    dest: $HOME/.bashrc
+    content: "{{ hosts_content }}"
+    state: present
+
+- name: Update local bashrc's history size
+  replace:
+    path: $HOME/.bashrc
+    regexp: 'HIST(FILE)?SIZE=\d+'
+    replace: 'HIST\1SIZE='
+
+- name: Update root bashrc
+  become: true
+  replace:
+    path: /root/.bashrc
+    regexp: 'xterm-color\) color_prompt=yes;;$'
+    replace: 'xterm-color|*-256color) color_prompt=yes;;'
+
+- name: Update root bashrc's history size
+  become: true
+  replace:
+    path: /root/.bashrc
+    regexp: 'HIST(FILE)?SIZE=\d+'
+    replace: 'HIST\1SIZE='

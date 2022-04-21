@@ -1,0 +1,26 @@
+- name: Set up workstation
+  hosts: all
+  roles:
+    - role: dir
+      tags:
+        - dir
+    - role: docker # update/upgrade apt
+      tags:
+        - docker
+    - role: bash
+      tags:
+        bash
+    - role: git
+      tags:
+        - git
+    #
+    # - role: apt
+    #   tags:
+    #     - apt
+# - hosts: all
+#   tasks:
+#     - name: Update and upgrade apt packages
+#       become: true
+#       apt:
+#         upgrade: yes
+#         update_cache: yes

@@ -1,0 +1,15 @@
+- name: Create directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+      - ~/.peco
+      - ~/.vim/after/plugin
+      - ~/.vim/after/ftplugin
+      - ~/.config/nvim
+
+- name: Create symlink
+  file:
+    src: $HOME/.vim/after
+    dest: ~/.config/nvim/after
+    state: link
