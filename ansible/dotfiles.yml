@@ -31,3 +31,9 @@
     - role: vim
       tags:
         - vim
+    - role: tmux
+      tags:
+        - tmux
+    - role: peco
+      tags:
+        - peco

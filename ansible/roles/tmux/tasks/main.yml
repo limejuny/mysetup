@@ -1,0 +1,10 @@
+- name: Install tmux.conf
+  copy:
+    src: files/tmux.conf
+    dest: $HOME/.tmux.conf
+
+- name: Install tmux.conf for root
+  become: true
+  copy:
+    src: files/tmux.conf
+    dest: $HOME/.tmux.conf

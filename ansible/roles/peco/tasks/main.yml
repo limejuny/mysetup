@@ -1,0 +1,10 @@
+- name: Install peco config
+  copy:
+    src: files/config.json
+    dest: $HOME/.peco/config.json
+
+- name: Install peco config for root
+  become: true
+  copy:
+    src: files/config.json
+    dest: $HOME/.peco/config.json
