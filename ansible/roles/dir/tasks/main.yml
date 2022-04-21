@@ -4,11 +4,33 @@
     state: directory
   loop:
       - ~/.peco
+      - ~/.vim/autoload
       - ~/.vim/after/plugin
       - ~/.vim/after/ftplugin
       - ~/.config/nvim
+      - ~/.local/share/nvim/site/autoload
+
+- name: Create directory for root
+  become: true
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+      - ~/.peco
+      - ~/.vim/autoload
+      - ~/.vim/after/plugin
+      - ~/.vim/after/ftplugin
+      - ~/.config/nvim
+      - ~/.local/share/nvim/site/autoload
 
 - name: Create symlink
+  file:
+    src: $HOME/.vim/after
+    dest: ~/.config/nvim/after
+    state: link
+
+- name: Create symlink for root
+  become: true
   file:
     src: $HOME/.vim/after
     dest: ~/.config/nvim/after

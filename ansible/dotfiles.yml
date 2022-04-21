@@ -28,3 +28,6 @@
     - role: node
       tags:
         - node
+    - role: vim
+      tags:
+        - vim

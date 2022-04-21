@@ -1,0 +1,120 @@
+- name: Install vim-plug
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.vim/autoload/plug.vim
+
+- name: Install vim-plug(neovim)
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
+
+- name: Install vim-plug for root
+  become: true
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.vim/autoload/plug.vim
+
+- name: Install vim-plug(neovim) for root
+  become: true
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
+
+- name: Set to update-alternatives vi
+  become: true
+  shell:
+    cmd: |
+        update-alternatives --set editor /usr/bin/nvim
+        update-alternatives --set vi /usr/bin/nvim
+        update-alternatives --set vim /usr/bin/vim.gtk3
+        update-alternatives --set vimdiff /usr/libexec/neovim/vimdiff
+
+# {{{ Install vim setting files
+- set_fact:
+    vimrc: "{{ lookup('file', 'files/vimrc') }}"
+    init_vim: "{{ lookup('file', 'files/init.vim') }}"
+    coc_vim: "{{ lookup('file', 'files/coc.vim') }}"
+
+- name: Install vimrc
+  blockinfile:
+    dest: $HOME/.vimrc
+    content: "{{ vimrc }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
+
+- name: Install init.vim
+  blockinfile:
+    dest: $HOME/.config/nvim/init.vim
+    content: "{{ init_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
+
+- name: Install coc.vim
+  blockinfile:
+    dest: $HOME/.vim/after/plugin/coc.vim
+    content: "{{ coc_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
+
+- name: Install coc-settings.json
+  copy:
+    src: files/coc-settings.json
+    dest: $HOME/.config/nvim/coc-settings.json
+
+- name: Install vimrc for root
+  become: true
+  blockinfile:
+    dest: $HOME/.vimrc
+    content: "{{ vimrc }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
+
+- name: Install init.vim for root
+  become: true
+  blockinfile:
+    dest: $HOME/.config/nvim/init.vim
+    content: "{{ init_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
+
+- name: Install coc.vim for root
+  become: true
+  blockinfile:
+    dest: $HOME/.vim/after/plugin/coc.vim
+    content: "{{ coc_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
+
+- name: Install coc-settings.json for root
+  become: true
+  copy:
+    src: files/coc-settings-root.json
+    dest: $HOME/.config/nvim/coc-settings.json
+# }}}
+
+- name: Install vim plugins
+  command: vim +PlugInstall +qall
+
+- name: Install nvim plugins
+  command: vi +PlugInstall +qall
+
+- name: Install vim plugins for root
+  become: true
+  command: vim +PlugInstall +qall
+
+- name: Install nvim plugins for root
+  become: true
+  command: vi +PlugInstall +qall
+
+- name: Install coc.nvim plugins
+  command: vi +'CocInstall -sync coc-html coc-json coc-xml coc-yaml coc-sh coc-pyright coc-java coc-clangd coc-solargraph' +qall
+
+- name: Install coc.nvim plugins for root
+  become: true
+  command: vi +'CocInstall -sync coc-html coc-json coc-xml coc-yaml coc-sh coc-pyright coc-java coc-clangd coc-solargraph' +qall
