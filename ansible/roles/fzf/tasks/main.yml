@@ -1,0 +1,21 @@
+- name: Cloning fzf
+  git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: $HOME/.fzf
+    clone: yes
+    update: yes
+
+- name: Install fzf
+  command: $HOME/.fzf/install --all
+
+- name: Cloning fzf for root
+  become: true
+  git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: /root/.fzf
+    clone: yes
+    update: yes
+
+- name: Install fzf for root
+  become: true
+  command: /root/.fzf/install --all

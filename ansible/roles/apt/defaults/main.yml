@@ -2,26 +2,23 @@ package_upgrade: yes
 
 packages:
   - build-essential
-  - ca-certificates
-  - curl
-  - gnupg
-  - lsb-release
 
-  - docker-ce
-  - docker-ce-cli
-  - containerd.io
-
-  - htop
-  - jq
-
+  # python
+  - python3
   - python3-dev
+  - python2
   - python2-dev
 
+  # tools
+  - htop
+  - jq
+  - cmake
+
+  # vim
   - vim-gtk
   - neovim
   - clangd
 
-  - cmake
   - rbenv
 
   - ripgrep

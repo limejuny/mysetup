@@ -7,20 +7,18 @@
     - role: docker # update/upgrade apt
       tags:
         - docker
-    - role: bash
+    - role: apt
       tags:
-        bash
+        - apt
     - role: git
       tags:
         - git
-    #
-    # - role: apt
-    #   tags:
-    #     - apt
-# - hosts: all
-#   tasks:
-#     - name: Update and upgrade apt packages
-#       become: true
-#       apt:
-#         upgrade: yes
-#         update_cache: yes
+    - role: fzf
+      tags:
+        - fzf
+    - role: python
+      tags:
+        - python
+    - role: bash
+      tags:
+        bash

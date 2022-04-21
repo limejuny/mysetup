@@ -1,0 +1,59 @@
+- name: Install required system packages
+  become: true
+  apt:
+    pkg:
+      - python2
+      - python2-dev
+      - python3
+      - python3-dev
+    state: latest
+    update_cache: yes
+
+- name: Install pip2
+  shell: curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
+
+- name: Install pip2 for root
+  become: true
+  shell: curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2
+
+- name: Install pip3
+  shell: curl https://bootstrap.pypa.io/get-pip.py | python3
+
+- name: Install pip3 for root
+  become: true
+  shell: curl https://bootstrap.pypa.io/get-pip.py | python3
+
+- name: update-alternatives install python2
+  become: true
+  community.general.alternatives:
+    name: python
+    path: /usr/bin/python2.7
+    link: /usr/bin/python
+    priority: "27"
+
+- name: update-alternatives install python3
+  become: true
+  community.general.alternatives:
+    name: python
+    path: /usr/bin/python3.8
+    link: /usr/bin/python
+    priority: "38"
+
+- name: Set to auto python version
+  become: true
+  shell: update-alternatives --auto python
+
+- name: Install some packages
+  pip:
+    name:
+      - virtualenv
+      - flake8
+      - yapf
+
+- name: Install some packages for root
+  become: true
+  pip:
+    name:
+      - virtualenv
+      - flake8
+      - yapf
