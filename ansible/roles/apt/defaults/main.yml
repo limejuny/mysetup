@@ -13,19 +13,19 @@ packages:
   - htop
   - jq
   - cmake
+  - ripgrep
+  - fd-find
+  - shellcheck
+  - net-tools
+  - peco
 
   # vim
   - vim-gtk
   - neovim
   - clangd
 
+  # ruby
   - rbenv
-
-  - ripgrep
-  - fd-find
-  - shellcheck
-  - net-tools
-  - peco
 
 remove_packages:
   - snapd

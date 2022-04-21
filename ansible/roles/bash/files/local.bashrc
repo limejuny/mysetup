@@ -60,3 +60,6 @@ fif() {
   --preview "cat {} | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 # }}}
+
+export PATH="$OME/.local/bin:$HOME/.rbenv/shims:$PATH"H
+eval "$(rbenv init -)"

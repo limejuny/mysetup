@@ -1,0 +1,30 @@
+- name: Instasll rbenv/ruby
+  shell:
+    cmd: |
+        rbenv init
+        mkdir -p "$(rbenv root)"/plugins
+        git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+        rbenv install 3.1.1
+        rbenv global 3.1.1
+
+- name: Instasll rbenv/ruby for root
+  become: true
+  shell:
+    cmd: |
+        rbenv init
+        mkdir -p "$(rbenv root)"/plugins
+        git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+        rbenv install 3.1.1
+        rbenv global 3.1.1
+
+- name: Install gem
+  shell:
+    cmd: |
+        $HOME/.rbenv/shims/gem install bundler pry pry-doc tmuxinator rufo solargraph
+#         $HOME/.rbenv/shims/solargraph download-core
+
+- name: Install gem for root
+  become: true
+  shell:
+    cmd: |
+        /root/.rbenv/shims/gem install bundler pry pry-doc tmuxinator rufo solargraph

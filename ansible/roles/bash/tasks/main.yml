@@ -30,6 +30,13 @@
 
 - name: Update root bashrc
   become: true
+  blockinfile:
+    dest: /root/.bashrc
+    content: "{{ hosts_content }}"
+    state: present
+
+- name: Update root bashrc's color profile
+  become: true
   replace:
     path: /root/.bashrc
     regexp: 'xterm-color\) color_prompt=yes;;$'
