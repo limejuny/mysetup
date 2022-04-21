@@ -25,3 +25,6 @@
     - role: ruby
       tags:
         - ruby
+    - role: node
+      tags:
+        - node
