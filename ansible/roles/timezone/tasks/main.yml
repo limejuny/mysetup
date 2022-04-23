@@ -1,0 +1,4 @@
+- name: Set timezone to Asia/Seoul
+  become: true
+  community.general.timezone:
+    name: Asia/Seoul

@@ -7,6 +7,9 @@
     - role: bash
       tags:
         bash
+    - role: timezone
+      tags:
+        - timezone
     - role: docker # update/upgrade apt
       tags:
         - docker
