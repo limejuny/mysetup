@@ -13,6 +13,9 @@
     - role: docker # update/upgrade apt
       tags:
         - docker
+    - role: compose
+      tags:
+        - compose
     - role: apt
       tags:
         - apt
