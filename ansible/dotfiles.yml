@@ -10,6 +10,9 @@
     - role: timezone
       tags:
         - timezone
+    - role: iptables # THIS WILL FLUSH IPTABLES SETTINGS
+      tags:
+        - iptables
     - role: docker # update/upgrade apt
       tags:
         - docker

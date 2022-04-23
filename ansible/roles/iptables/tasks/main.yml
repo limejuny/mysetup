@@ -1,0 +1,5 @@
+- name: Flush filter chain
+  become: true
+  ansible.builtin.iptables:
+    table: filter
+    flush: yes
