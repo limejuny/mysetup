@@ -1,4 +1,4 @@
-- name: Instasll rbenv/ruby
+- name: Install rbenv/ruby
   shell:
     cmd: |
         rbenv init
@@ -7,7 +7,7 @@
         rbenv install 3.1.1
         rbenv global 3.1.1
 
-- name: Instasll rbenv/ruby for root
+- name: Install rbenv/ruby for root
   become: true
   shell:
     cmd: |
