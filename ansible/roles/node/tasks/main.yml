@@ -6,8 +6,10 @@
   shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 - name: Install node
-  shell: /bin/bash -c "source ~/.nvm/nvm.sh && nvm install node"
+  shell: /bin/bash -c "source ~/.nvm/nvm.sh && nvm install --lts node"
 
 - name: Install node for root
   become: true
-  shell: /bin/bash -c "source ~/.nvm/nvm.sh && nvm install node"
+  shell: /bin/bash -c "source ~/.nvm/nvm.sh && nvm install --lts node"
+
+# nvm alias default lts/*
