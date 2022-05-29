@@ -3,6 +3,7 @@
     path: "{{ item }}"
     state: directory
   loop:
+      - ~/bin/lombok
       - ~/.peco
       - ~/.vim/autoload
       - ~/.vim/after/plugin
