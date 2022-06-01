@@ -28,6 +28,9 @@
     - role: fzf
       tags:
         - fzf
+    - role: java
+      tags:
+        -java
     - role: python
       tags:
         - python

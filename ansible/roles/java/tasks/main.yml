@@ -1,0 +1,4 @@
+- name: Install lombok
+  ansible.builtin.get_url:
+    url: https://projectlombok.org/downloads/lombok.jar
+    dest: ~/bin/lombok/lombok.jar
