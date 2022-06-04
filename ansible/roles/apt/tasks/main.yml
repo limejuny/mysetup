@@ -5,6 +5,11 @@
   become_user: root
   become_method: sudo
 
+- name: Add neovim ppa
+  become: true
+  ansible.builtin.apt_repository:
+    repo: 'ppa:neovim-ppa/stable'
+
 - name: Install apt packages
   apt:
     name: "{{ item }}"
