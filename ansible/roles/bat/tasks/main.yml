@@ -1,0 +1,21 @@
+- name: Download bat (x86_64)
+  ansible.builtin.get_url:
+    url: https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb
+    dest: ~/bat.deb
+  when: ansible_architecture == "x86_64"
+
+- name: Download bat (aarch64)
+  ansible.builtin.get_url:
+    url: https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_arm64.deb
+    dest: ~/bat.deb
+  when: ansible_architecture == "aarch64"
+
+- name: Install bat
+  become: true
+  apt:
+    deb: /home/ubuntu/bat.deb
+
+- name: Remove bat package
+  file:
+    path: ~/bat.deb
+    state: absent
