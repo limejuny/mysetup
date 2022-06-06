@@ -49,3 +49,6 @@
     - role: peco
       tags:
         - peco
+    - role: bat
+      tags:
+        - bat
