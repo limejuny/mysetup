@@ -112,9 +112,29 @@
   become: true
   command: vi +PlugInstall +qall
 
+# - name: Install coc.nvim plugins
+#   command: vi +'CocInstall -sync coc-html coc-json coc-xml coc-yaml coc-sh coc-pyright coc-java coc-clangd coc-solargraph' +qall
+
+# - name: Install coc.nvim plugins for root
+#   become: true
+#   command: vi +'CocInstall -sync coc-html coc-json coc-xml coc-yaml coc-sh coc-pyright coc-java coc-clangd coc-solargraph' +qall
+
 - name: Install coc.nvim plugins
-  command: vi +'CocInstall -sync coc-html coc-json coc-xml coc-yaml coc-sh coc-pyright coc-java coc-clangd coc-solargraph' +qall
+  copy:
+    src: ./files/coc.sh
+    dest: $HOME/coc.sh
+    mode: '0755'
 
 - name: Install coc.nvim plugins for root
   become: true
-  command: vi +'CocInstall -sync coc-html coc-json coc-xml coc-yaml coc-sh coc-pyright coc-java coc-clangd coc-solargraph' +qall
+  copy:
+    src: ./files/coc.sh
+    dest: $HOME/coc.sh
+    mode: '0755'
+
+# - name: Run coc.sh
+#   ansible.builtin.shell: bash $HOME/coc.sh
+
+# - name: Run coc.sh for root
+#   become: true
+#   ansible.builtin.shell: bash $HOME/coc.sh
