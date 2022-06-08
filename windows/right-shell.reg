@@ -28,16 +28,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Directory\Background\shell\Powershell\command]
 @="powershell.exe -noexit -command Set-Location -literalPath '%V'"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\WSL]
-@="@wsl.exe,-2"
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\WSL\command]
-@="wsl.exe --cd \"%V\""
-
-[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]
-@="Open Windows Terminal Here"
-
 [HKEY_CLASSES_ROOT\Directory\shell]
 @="none"
 
@@ -64,13 +54,6 @@ Windows Registry Editor Version 5.00
 "LegacyDisable"=""
 "SuppressionPolicy"=dword:00000080
 
-[HKEY_CLASSES_ROOT\Directory\shell\nvim-qt]
-@="Edit with Neovim"
-"Icon"="\"C:\\tools\\neovim\\Neovim\\bin\\nvim-qt.exe\""
-
-[HKEY_CLASSES_ROOT\Directory\shell\nvim-qt\command]
-@="\"C:\\tools\\neovim\\Neovim\\bin\\nvim-qt.exe\" \"%1\""
-
 [HKEY_CLASSES_ROOT\Directory\shell\Powershell]
 @="@shell32.dll,-8508"
 "Extended"=""
@@ -79,13 +62,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\shell\Powershell\command]
 @="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_CLASSES_ROOT\Directory\shell\WSL]
-@="@wsl.exe,-2"
-"NoWorkingDirectory"=""
-
-[HKEY_CLASSES_ROOT\Directory\shell\WSL\command]
-@="wsl.exe --cd \"%V\""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\01MenuCmd]
 "ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuCmd"
@@ -114,13 +90,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Powershell\command]
 @="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\WSL]
-@="@wsl.exe,-2"
-"NoWorkingDirectory"=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\WSL\command]
-@="wsl.exe --cd \"%V\""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell]
 @="none"
@@ -156,12 +125,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\Powershell\command]
 @="powershell.exe -noexit -command Set-Location -literalPath '%V'"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\WSL]
-@="@wsl.exe,-2"
-"NoWorkingDirectory"=""
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\WSL\command]
-@="wsl.exe --cd \"%V\""
-
 
