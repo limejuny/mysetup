@@ -61,5 +61,5 @@ fif() {
 }
 # }}}
 
-export PATH="$OME/.local/bin:$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
