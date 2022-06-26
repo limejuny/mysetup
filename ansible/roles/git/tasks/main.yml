@@ -8,3 +8,8 @@
   template:
     src: "gitconfig.j2"
     dest: "~/.gitconfig"
+
+- name: Install git commit template
+  template:
+    src: "tmpl.j2"
+    dest: "~/.tmpl.md"
