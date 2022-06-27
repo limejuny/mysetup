@@ -103,6 +103,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'vim-scripts/wombat256.vim'
 
 " Autocomplete
+Plug 'github/copilot.vim'
 if !has('nvim')
   Plug 'ycm-core/YouCompleteMe', { 'for': [ 'python' ] }
   autocmd FileType python nmap <leader>gt :YcmComplete GoTo<CR>
