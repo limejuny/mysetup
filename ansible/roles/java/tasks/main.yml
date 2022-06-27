@@ -2,3 +2,16 @@
   ansible.builtin.get_url:
     url: https://projectlombok.org/downloads/lombok.jar
     dest: ~/bin/lombok/lombok.jar
+
+- name: Check if sdkman is installed
+  shell: test -d ~/.sdkman && echo "yes" || echo "no"
+  register: is_sdkman_installed
+
+- name: Install sdkman
+  shell: curl -s "https://get.sdkman.io" | bash
+  when: is_sdkman_installed.stdout == "no"
+
+- name: Install openjdk 11.0.12
+  shell: source ~/.sdkman/bin/sdkman-init.sh && sdk install java 11.0.12-open
+  args:
+    executable: /bin/bash
