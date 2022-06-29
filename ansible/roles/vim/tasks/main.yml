@@ -34,6 +34,7 @@
     vimrc: "{{ lookup('file', 'files/vimrc') }}"
     init_vim: "{{ lookup('file', 'files/init.vim') }}"
     coc_vim: "{{ lookup('file', 'files/coc.vim') }}"
+    go_vim: "{{ lookup('file', 'files/go.vim') }}"
 
 - name: Install vimrc
   blockinfile:
@@ -63,6 +64,14 @@
   copy:
     src: files/coc-settings.json
     dest: $HOME/.config/nvim/coc-settings.json
+
+- name: Install go.vim
+  blockinfile:
+    dest: $HOME/.vim/after/ftplugin/go.vim
+    content: "{{ go_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
 
 - name: Install vimrc for root
   become: true
@@ -96,6 +105,15 @@
   copy:
     src: files/coc-settings-root.json
     dest: $HOME/.config/nvim/coc-settings.json
+
+- name: Install go.vim
+  become: true
+  blockinfile:
+    dest: $HOME/.vim/after/ftplugin/go.vim
+    content: "{{ go_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK "
 # }}}
 
 - name: Install vim plugins
