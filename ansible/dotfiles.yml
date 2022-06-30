@@ -43,6 +43,9 @@
     - role: vim
       tags:
         - vim
+    - role: go
+      tags:
+        - go
     - role: tmux
       tags:
         - tmux

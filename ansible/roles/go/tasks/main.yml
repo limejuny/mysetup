@@ -1,0 +1,27 @@
+- name: Install golang (x86_64)
+  ansible.builtin.get_url:
+    url: https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz
+    dest: ~/go1.18.3.linux.tar.gz
+    mode: '0755'
+  when: ansible_architecture == "x86_64"
+
+- name: Install golang (aarch64)
+  ansible.builtin.get_url:
+    url: https://dl.google.com/go/go1.18.3.linux-arm64.tar.gz
+    dest: ~/go1.18.3.linux.tar.gz
+    mode: '0755'
+  when: ansible_architecture == "aarch64"
+
+- name: Extract go binary
+  become: true
+  ansible.builtin.unarchive:
+    src: /home/ubuntu/go1.18.3.linux.tar.gz
+    dest: /usr/local
+    remote_src: yes
+
+- name: Install go in /etc/profile
+  become: true
+  blockinfile:
+    path: /etc/profile
+    block: |
+      export PATH=$PATH:/usr/local/go/bin
