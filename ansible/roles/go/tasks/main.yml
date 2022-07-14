@@ -28,3 +28,8 @@
 
 - name: Install golangci-lint
   shell: /bin/bash -c "curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(/usr/local/go/bin/go env GOPATH)/bin v1.46.2"
+
+- name: Delete go.tar.gz
+  file:
+    path: ~/go1.18.3.linux.tar.gz
+    state: absent
