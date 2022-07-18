@@ -29,15 +29,15 @@
     name: python
     path: /usr/bin/python2.7
     link: /usr/bin/python
-    priority: "27"
+    priority: "270"
 
 - name: update-alternatives install python3
   become: true
   community.general.alternatives:
     name: python
-    path: /usr/bin/python3.8
+    path: /usr/bin/python3.10
     link: /usr/bin/python
-    priority: "38"
+    priority: "310"
 
 - name: Set to auto python version
   become: true
