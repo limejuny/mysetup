@@ -1,38 +1,38 @@
-# - name: Install golang (x86_64)
-#   ansible.builtin.get_url:
-#     url: https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz
-#     dest: ~/go1.18.3.linux.tar.gz
-#     mode: '0755'
-#   when: ansible_architecture == "x86_64"
+- name: Install golang (x86_64)
+  ansible.builtin.get_url:
+    url: https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz
+    dest: ~/go1.18.3.linux.tar.gz
+    mode: '0755'
+  when: ansible_architecture == "x86_64"
 
-# - name: Install golang (aarch64)
-#   ansible.builtin.get_url:
-#     url: https://dl.google.com/go/go1.18.3.linux-arm64.tar.gz
-#     dest: ~/go1.18.3.linux.tar.gz
-#     mode: '0755'
-#   when: ansible_architecture == "aarch64"
+- name: Install golang (aarch64)
+  ansible.builtin.get_url:
+    url: https://dl.google.com/go/go1.18.3.linux-arm64.tar.gz
+    dest: ~/go1.18.3.linux.tar.gz
+    mode: '0755'
+  when: ansible_architecture == "aarch64"
 
-# - name: Extract go binary
-#   become: true
-#   ansible.builtin.unarchive:
-#     src: /home/ubuntu/go1.18.3.linux.tar.gz
-#     dest: /usr/local
-#     remote_src: yes
+- name: Extract go binary
+  become: true
+  ansible.builtin.unarchive:
+    src: /home/ubuntu/go1.18.3.linux.tar.gz
+    dest: /usr/local
+    remote_src: yes
 
-# - name: Install go in /etc/profile
-#   become: true
-#   blockinfile:
-#     path: /etc/profile
-#     block: |
-#       export PATH=$PATH:/usr/local/go/bin
+- name: Install go in /etc/profile
+  become: true
+  blockinfile:
+    path: /etc/profile
+    block: |
+      export PATH=$PATH:/usr/local/go/bin
 
-# - name: Install golangci-lint
-#   shell: /bin/bash -c "curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(/usr/local/go/bin/go env GOPATH)/bin v1.46.2"
+- name: Install golangci-lint
+  shell: /bin/bash -c "curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(/usr/local/go/bin/go env GOPATH)/bin v1.46.2"
 
-# - name: Delete go.tar.gz
-#   file:
-#     path: ~/go1.18.3.linux.tar.gz
-#     state: absent
+- name: Delete go.tar.gz
+  file:
+    path: ~/go1.18.3.linux.tar.gz
+    state: absent
 
 - name: Check if gvm is installed
   shell: test -d ~/.gvm && echo "yes" || echo "no"

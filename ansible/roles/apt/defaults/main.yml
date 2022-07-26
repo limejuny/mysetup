@@ -2,6 +2,7 @@ package_upgrade: yes
 
 packages:
   - build-essential
+  - bison
 
   # python
   - python3
