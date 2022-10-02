@@ -3,6 +3,7 @@ package_upgrade: yes
 packages:
   - build-essential
   - bison
+  - universal-ctags
 
   # python
   - python3
