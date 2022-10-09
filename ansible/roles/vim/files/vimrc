@@ -727,6 +727,7 @@ set runtimepath^=~/.vim/bundle/vim-erlang-omnicomplete
 
 let delimitMate_expand_cr=1
 autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd FileType json setlocal commentstring=//\ %s
 
 " let g:coc_disable_startup_warning = 1
 
