@@ -4,6 +4,7 @@ packages:
   - build-essential
   - bison
   - universal-ctags
+  - rsync
 
   # python
   - python3
