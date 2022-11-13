@@ -729,6 +729,10 @@ let delimitMate_expand_cr=1
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd FileType json setlocal commentstring=//\ %s
 
+let g:copilot_filetypes = {
+    \ 'yaml': v:true,
+    \ }
+
 " let g:coc_disable_startup_warning = 1
 
 " }}}
