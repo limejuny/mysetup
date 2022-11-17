@@ -28,6 +28,9 @@
     - role: fzf
       tags:
         - fzf
+    - role: rg
+      tags:
+        - rg
     - role: java
       tags:
         -java

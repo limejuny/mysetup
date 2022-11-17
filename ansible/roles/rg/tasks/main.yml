@@ -1,0 +1,7 @@
+- name: Install rg.bash
+  become: true
+  ansible.posix.synchronize:
+    src: ./files/rg.bash
+    dest: /usr/share/bash-completion/completions/rg
+    rsync_opts:
+      - "--chmod=F644"
