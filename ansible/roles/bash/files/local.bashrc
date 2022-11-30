@@ -67,3 +67,8 @@ eval "$(rbenv init -)"
 if [[ -v TMUX ]]; then
   unset HISTFILE
 fi
+
+if command -v kubectl &> /dev/null; then
+  alias k=kubectl
+  complete -o default -F __start_kubectl k
+fi
