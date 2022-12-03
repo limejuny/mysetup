@@ -68,6 +68,10 @@ if [[ -v TMUX ]]; then
   unset HISTFILE
 fi
 
+if command -v minikube &> /dev/null; then
+  eval "$(minikube completion bash)"
+fi
+
 if command -v kubectl &> /dev/null; then
   alias k=kubectl
   complete -o default -F __start_kubectl k
