@@ -20,5 +20,12 @@
     "java"
   ],
   "java.home": "/home/ubuntu/.sdkman/candidates/java/current",
-  "java.jdt.ls.vmargs": "-javaagent:/home/ubuntu/bin/lombok/lombok.jar"
+  "java.jdt.ls.vmargs": "-javaagent:/home/ubuntu/bin/lombok/lombok.jar",
+  "yaml.schemas": {
+    "http://json.schemastore.org/github-workflow": ".github/workflows/*.yml",
+    "kubenetes": [
+      "k8s/*.yml",
+      "k8s/*.yaml"
+    ]
+  }
 }
