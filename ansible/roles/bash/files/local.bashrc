@@ -76,3 +76,7 @@ if command -v kubectl &> /dev/null; then
   alias k=kubectl
   complete -o default -F __start_kubectl k
 fi
+
+if command -v helm &> /dev/null; then
+  eval "$(helm completion bash)"
+fi
