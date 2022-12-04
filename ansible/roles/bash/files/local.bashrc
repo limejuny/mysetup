@@ -72,6 +72,7 @@ if command -v minikube &> /dev/null; then
   eval "$(minikube completion bash)"
 fi
 
+source <(kubectl completion bash)
 if command -v kubectl &> /dev/null; then
   alias k=kubectl
   complete -o default -F __start_kubectl k
