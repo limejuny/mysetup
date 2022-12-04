@@ -24,8 +24,8 @@
   "yaml.schemas": {
     "http://json.schemastore.org/github-workflow": ".github/workflows/*.yml",
     "kubenetes": [
-      "k8s/*.yml",
-      "k8s/*.yaml"
+      "k8s/**/*.yml",
+      "k8s/**/*.yaml"
     ]
   }
 }
