@@ -16,6 +16,9 @@
     - role: docker # update/upgrade apt
       tags:
         - docker
+    - role: kubectl
+      tags:
+        - kubectl
     - role: compose
       tags:
         - compose
