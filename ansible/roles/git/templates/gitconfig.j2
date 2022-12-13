@@ -1,6 +1,7 @@
 [user]
   name = {{ full_name }}
   email = {{ git_email }}
+  signingKey = 
 [credential]
   helper = store
 [core]
@@ -25,7 +26,10 @@
   s = status
 [commit]
   template = /home/ubuntu/.tmpl.md
+  gpgsign = true
 [color "grep"]
   linenumber = yellow bold
   match = red
   filename = magenta
+[gpg]
+  program = gpg
