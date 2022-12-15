@@ -18,5 +18,12 @@
     "cpp",
     "xml",
     "java"
-  ]
+  ],
+  "yaml.schemas": {
+    "http://json.schemastore.org/github-workflow": ".github/workflows/*.yml",
+    "kubernetes": [
+      "k8s/**/*.yml",
+      "k8s/**/*.yaml"
+    ]
+  }
 }
