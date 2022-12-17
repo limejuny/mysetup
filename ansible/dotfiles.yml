@@ -46,6 +46,9 @@
     - role: node
       tags:
         - node
+    - role: terraform
+      tags:
+        - terraform
     - role: vim
       tags:
         - vim

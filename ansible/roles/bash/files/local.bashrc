@@ -61,7 +61,7 @@ fif() {
 }
 # }}}
 
-export PATH="$HOME/.local/bin:$HOME/.rbenv/shims:$PATH:$HOME/go/bin"
+export PATH="$HOME/.local/bin:$HOME/.rbenv/shims:$PATH:$HOME/go/bin:$HOME/.tfenv/bin"
 eval "$(rbenv init -)"
 
 if [[ -v TMUX ]]; then

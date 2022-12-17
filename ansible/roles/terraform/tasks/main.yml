@@ -1,0 +1,16 @@
+- name: Check if tfenv is installed
+  shell: test -d ~/.tfenv && echo "yes" || echo "no"
+  register: is_tfenv_installed
+
+- name: Clone tfenv
+  git:
+    repo: 'https://github.com/tfutils/tfenv.git'
+    dest: ~/.tfenv
+  when: is_tfenv_installed.stdout == "no"
+
+- name: Install & Set Terraform Version
+  shell: |
+      ~/.tfenv/bin/tfenv install {{ terraform_version }}
+      ~/.tfenv/bin/tfenv use {{ terraform_version }}
+  vars:
+    terraform_version: 1.3.6
