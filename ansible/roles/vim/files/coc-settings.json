@@ -27,5 +27,15 @@
       "k8s/**/*.yml",
       "k8s/**/*.yaml"
     ]
+  },
+  "languageserver": {
+    "terraform": {
+      "command": "~/.bin/terraform-lsp",
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {}
+    }
   }
 }
