@@ -4,6 +4,7 @@
     state: directory
   loop:
       - ~/bin/lombok
+      - ~/bin/terraform
       - ~/.peco
       - ~/.vim/autoload
       - ~/.vim/after/plugin
