@@ -1,7 +1,7 @@
 - name: Install docker-compose (x86_64)
   become: true
   ansible.builtin.get_url:
-    url: https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64
+    url: https://github.com/docker/compose/releases/download/v2.14.2/docker-compose-linux-x86_64
     dest: /usr/local/bin/docker-compose
     mode: '0755'
   when: ansible_architecture == "x86_64"
@@ -9,7 +9,7 @@
 - name: Install docker-compose (aarch64)
   become: true
   ansible.builtin.get_url:
-    url: https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-aarch64
+    url: https://github.com/docker/compose/releases/download/v2.14.2/docker-compose-linux-aarch64
     dest: /usr/local/bin/docker-compose
     mode: '0755'
   when: ansible_architecture == "aarch64"
