@@ -30,8 +30,7 @@
   },
   "languageserver": {
     "terraform": {
-      "command": "terraform-ls",
-      "args": ["serve"],
+      "command": "~/bin/terraform-lsp",
       "filetypes": [
         "terraform",
         "tf"

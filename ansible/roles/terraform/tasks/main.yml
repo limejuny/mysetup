@@ -15,25 +15,16 @@
   vars:
     terraform_version: 1.3.6
 
-- name: Install terraform-ls (x86_64)
-  get_url:
-    url: https://releases.hashicorp.com/terraform-ls/{{ terraform_ls_version }}/terraform-ls_{{ terraform_ls_version }}_linux_amd64.zip
-    dest: ~/bin/terraform/terraform-ls.zip
-  vars:
-    terraform_ls_version: 0.30.1
-  when: ansible_architecture == "x86_64"
+- name: Clone terraform-lsp
+  git:
+    repo: 'https://github.com/juliosueiras/terraform-lsp.git'
+    dest: ~/.terraform-lsp
+    version: v0.0.12
 
-- name: Install terraform-ls (aarch64)
-  get_url:
-    url: https://releases.hashicorp.com/terraform-ls/{{ terraform_ls_version }}/terraform-ls_{{ terraform_ls_version }}_linux_arm64.zip
-    dest: ~/bin/terraform/terraform-ls.zip
-  vars:
-    terraform_ls_version: 0.30.1
-  when: ansible_architecture == "aarch64"
-
-- name: Unzip terraform-ls
-  unarchive:
-    src: ~/bin/terraform/terraform-ls.zip
-    dest: ~/bin
-    remote_src: yes
-  register: terraform_ls_unzip
+- name: Install terraform-lsp
+  shell: |
+      cd ~/.terraform-lsp
+      PATH=$PATH:/usr/local/go/bin
+      GO111MODULE=on go mod download
+      make
+      mv ~/.terraform-lsp/terraform-lsp ~/bin/terraform-lsp

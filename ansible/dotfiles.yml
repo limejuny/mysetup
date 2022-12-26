@@ -46,15 +46,15 @@
     - role: node
       tags:
         - node
-    - role: terraform
-      tags:
-        - terraform
     - role: vim
       tags:
         - vim
     - role: go
       tags:
         - go
+    - role: terraform
+      tags:
+        - terraform
     - role: tmux
       tags:
         - tmux
