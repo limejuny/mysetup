@@ -77,6 +77,7 @@ if has('nvim')
   " Trigger for code actions
   " Make sure `"codeLens.enable": true` is set in your coc config
   nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
+  nnoremap <leader>CL :<C-u>CocCommand document.toggleCodeLens<CR>
 
   " Show all diagnostics
   nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
