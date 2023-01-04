@@ -4,8 +4,8 @@
         rbenv init
         mkdir -p "$(rbenv root)"/plugins
         git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-        rbenv install 3.1.1
-        rbenv global 3.1.1
+        rbenv install 3.2.0
+        rbenv global 3.2.0
 
 - name: Install rbenv/ruby for root
   become: true
@@ -14,8 +14,8 @@
         rbenv init
         mkdir -p "$(rbenv root)"/plugins
         git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-        rbenv install 3.1.1
-        rbenv global 3.1.1
+        rbenv install 3.2.0
+        rbenv global 3.2.0
 
 - name: Install gem
   shell:
