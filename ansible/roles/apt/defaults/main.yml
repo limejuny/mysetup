@@ -29,6 +29,7 @@ packages:
 
   # ruby
   - rbenv
+  - libyaml-dev
 
 remove_packages:
   - snapd
