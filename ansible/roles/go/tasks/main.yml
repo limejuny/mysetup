@@ -15,7 +15,7 @@
 - name: Extract go binary
   become: true
   ansible.builtin.unarchive:
-    src: /home/ubuntu/go1.18.3.linux.tar.gz
+    src: /home/{{ remote_user }}/go1.18.3.linux.tar.gz
     dest: /usr/local
     remote_src: yes
 

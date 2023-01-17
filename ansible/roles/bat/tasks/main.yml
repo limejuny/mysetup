@@ -13,7 +13,7 @@
 - name: Install bat
   become: true
   apt:
-    deb: /home/ubuntu/bat.deb
+    deb: /home/{{ remote_user }}/bat.deb
 
 - name: Remove bat package
   file:
