@@ -1,0 +1,23 @@
+- name: Add an apt signing key for Helm
+  become: true
+  get_url:
+    url: https://baltocdn.com/helm/signing.asc
+    dest: /etc/apt/trusted.gpg.d/helm.asc
+    mode: '0644'
+
+- name: Add Helm Repository
+  become: true
+  apt_repository:
+    repo: deb [signed-by=/etc/apt/trusted.gpg.d/helm.asc] https://baltocdn.com/helm/stable/debian/ all main
+    state: present
+    filename: helm-stable-debian
+
+- name: Install Helm
+  become: true
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+      - helm

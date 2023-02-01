@@ -19,6 +19,9 @@
     - role: kubectl
       tags:
         - kubectl
+    - role: helm
+      tags:
+        - helm
     - role: compose
       tags:
         - compose
