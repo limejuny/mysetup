@@ -143,6 +143,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'othree/xml.vim'
+Plug 'towolf/vim-helm'
 
 call plug#end()
 " }}}
@@ -411,16 +412,16 @@ noremap <leader>bd :Bd<cr>
 " noremap <leader>b<space> :CtrlPBuffer<cr>
 noremap <leader>b<space> :Buffers<cr>
 
-" Neovim terminal configurations
-if has('nvim')
-  " Use <Esc> to escape terminal insert mode
-  tnoremap <Esc> <C-\><C-n>
-  " Make terminal split moving behave like normal neovim
-  tnoremap <c-h> <C-\><C-n><C-w>h
-  tnoremap <c-j> <C-\><C-n><C-w>j
-  tnoremap <c-k> <C-\><C-n><C-w>k
-  tnoremap <c-l> <C-\><C-n><C-w>l
-endif
+" " Neovim terminal configurations
+" if has('nvim')
+"   " Use <Esc> to escape terminal insert mode
+"   tnoremap <Esc> <C-\><C-n>
+"   " Make terminal split moving behave like normal neovim
+"   tnoremap <c-h> <C-\><C-n><C-w>h
+"   tnoremap <c-j> <C-\><C-n><C-w>j
+"   tnoremap <c-k> <C-\><C-n><C-w>k
+"   tnoremap <c-l> <C-\><C-n><C-w>l
+" endif
 
 " }}}
 
