@@ -5,10 +5,20 @@
   become_user: root
   become_method: sudo
 
-- name: Add neovim ppa
+- name: Add an apt signing key for Neovim
   become: true
-  ansible.builtin.apt_repository:
-    repo: 'ppa:neovim-ppa/stable'
+  get_url:
+    # https://launchpad.net/~neovim-ppa/+archive/ubuntu/stable
+    url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x9dbb0be9366964f134855e2255f96fcf8231b6dd
+    dest: /etc/apt/trusted.gpg.d/neovim.asc
+    mode: '0644'
+
+- name: Add Neovim Repository
+  become: true
+  apt_repository:
+    repo: deb [signed-by=/etc/apt/trusted.gpg.d/neovim.asc] http://ppa.launchpad.net/neovim-ppa/stable/ubuntu {{ ansible_distribution_release }} main
+    state: present
+    filename: neovim
 
 - name: Install apt packages
   apt:
