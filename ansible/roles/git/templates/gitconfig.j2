@@ -24,6 +24,7 @@
   std = !git stl | xargs git stash drop
   de = "!git diff --name-only HEAD | peco --initial-filter=Fuzzy | xargs -o vim"
   s = status
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
 [commit]
   template = /home/ubuntu/.tmpl.md
   gpgsign = true
