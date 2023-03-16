@@ -732,7 +732,7 @@ let s:clip = '/mnt/c/Windows/System32/clip.exe'
 if executable(s:clip)
   augroup WSLYank
     autocmd!
-    autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | '.s:clip)
+    autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | iconv -f utf8 -t cp949 | '.s:clip)
   augroup END
 endif
 
