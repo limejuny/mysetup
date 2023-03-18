@@ -120,7 +120,7 @@
   command: vim +PlugInstall +qall
 
 - name: Install nvim plugins
-  command: vi +PlugInstall +qall
+  command: vi --headless +PlugInstall +qall
 
 - name: Install vim plugins for root
   become: true
@@ -128,7 +128,7 @@
 
 - name: Install nvim plugins for root
   become: true
-  command: vi +PlugInstall +qall
+  command: vi --headless +PlugInstall +qall
 
 # - name: Install coc.nvim plugins
 #   command: vi +'CocInstall -sync coc-html coc-json coc-xml coc-yaml coc-sh coc-pyright coc-java coc-clangd coc-solargraph' +qall
