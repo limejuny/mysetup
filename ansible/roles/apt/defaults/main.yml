@@ -5,6 +5,8 @@ packages:
   - bison
   - universal-ctags
   - rsync
+  - open-iscsi
+  - nfs-common
 
   # python
   - python3
