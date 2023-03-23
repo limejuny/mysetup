@@ -1,107 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
-if [ "$1" == "restore" ]; then
-  cat list.txt | awk '{print "cp", "./backup/"$1, $2}' | sh -x
-else
-  # echo "usage: ./install (install|restore)"
-  if [ ! -d backup ]; then
-    mkdir backup
-  fi
-  if [ ! -d ~/.peco ]; then
-    mkdir ~/.peco
-  fi
+tags="$1"
 
-  # vim
-  mkdir -p $HOME/.vim/after/plugin
-  mkdir -p $HOME/.vim/after/ftplugin
-  mkdir -p ~/.config/nvim/after
-  rm -r ~/.config/nvim/after
-  ln -s $HOME/.vim/after $HOME/.config/nvim/after
-
-  # bash
-  echo set -o vi | sudo tee -a /etc/bash.bashrc
-  echo export EDITOR=vi | sudo tee -a /etc/bash.bashrc
-  echo set bell-style none | sudo tee -a /etc/inputrc
-
-  # docker
-  # https://docs.docker.com/engine/install/ubuntu/
-  sudo apt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  sudo apt update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io
-  sudo usermod -aG docker $USER
-
-  # fzf
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
-
-  # python
-  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  python3 get-pip.py
-  sudo apt install python3-dev python2-dev
-  sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 27
-  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 38
-  sudo update-alternatives --config python
-  pip install virtualenv
-  pip install flake8
-  pip install yapf
-
-  # nvim
-  sudo apt install vim-gtk neovim clangd
-  sudo update-alternatives --config editor
-  sudo update-alternatives --config vi
-  sudo update-alternatives --config vim
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-  # rbenv
-  sudo apt install rbenv
-  rbenv init
-  mkdir -p "$(rbenv root)"/plugins
-  git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
-  echo export PATH=\"\$HOME/.local/bin:\$HOME/.rbenv/shims:\$PATH\" | tee -a ~/.bashrc
-  echo eval \"\$\(rbenv init -\)\" | tee -a ~/.bashrc
-  source ~/.bashrc
-  rbenv install 3.0.0
-  rbenv global 3.0.0
-  gem install bundler
-  gem install pry pry-doc tmuxinator solargraph rufo
-
-  cat list.txt | awk '{print "cp", $2, "./backup/"$1}' | sh -x
-  cat list.txt | awk '{print "cp", "./original/"$1, $2}' | sh -x
-  sudo apt install ripgrep fd-find shellcheck net-tools peco
-  sudo apt install cmake
-  solargraph download-core
-
-  # sdkman
-  curl -s "https://get.sdkman.io" | bash
-  source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-  # lombok
-  mkdir -p ~/bin/lombok
-  wget https://projectlombok.org/downloads/lombok.jar -P ~/bin/lombok
-
-  # docker-compose
-  echo "======================"
-  echo "INSTALL DOCKER_COMPOSE"
-  echo "https://docs.docker.com/compose/install/"
-  echo "https://github.com/docker/compose/releases"
-
-  # golang
-  echo
-  echo "=========================="
-  echo "https://go.dev/doc/install"
-  # echo export PATH=\$PATH:/usr/local/go/bin | sudo tee -a /etc/profile
-
-  # nvm
-  echo
-  echo "============================="
-  echo "https://github.com/nvm-sh/nvm"
-
-  # bat
-  echo
-  echo "======================================="
-  echo "https://github.com/sharkdp/bat/releases"
+if [ -z $tags ]; then
+  tags="all"
 fi
+
+if ! [ -x "$(command -v ansible)" ]; then
+  sudo apt update
+  sudo apt -y install ansible
+fi
+
+ansible-playbook -i ./hosts ./dotfiles.yml --tags $tags
+
+echo "dotfiles: Bootstrap complete"
+echo "Successfully set up dev environment."
