@@ -21,3 +21,9 @@
   vars:
     packages:
       - helm
+
+- name: Install Helm plugins
+  become: true
+  command: helm plugin install {{ item }}
+  with_items:
+    - https://github.com/databus23/helm-diff
