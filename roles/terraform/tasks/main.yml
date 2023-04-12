@@ -13,7 +13,7 @@
       ~/.tfenv/bin/tfenv install {{ terraform_version }}
       ~/.tfenv/bin/tfenv use {{ terraform_version }}
   vars:
-    terraform_version: 1.3.6
+    terraform_version: 1.4.2
 
 - name: Clone terraform-lsp
   git:
