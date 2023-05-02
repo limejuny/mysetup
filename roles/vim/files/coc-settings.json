@@ -4,7 +4,6 @@
   "diagnostic.infoSign": "ℹ",
   "diagnostic.hintSign": "➤",
   "suggest.noselect": false,
-  "suggest.echodocSupport": true,
   "codeLens.enable": true,
   "signature.enable": true,
   "suggest.preferCompleteThanJumpPlaceholder": true,
@@ -19,8 +18,18 @@
     "xml",
     "java"
   ],
-  "java.home": "/home/ubuntu/.sdkman/candidates/java/current",
+  "java.jdt.ls.java.home": "/home/ubuntu/.sdkman/candidates/java/current",
   "java.jdt.ls.vmargs": "-javaagent:/home/ubuntu/bin/lombok/lombok.jar",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "/home/ubuntu/.sdkman/candidates/java/11.0.12-open"
+    },
+    {
+      "name": "JavaSE-17",
+      "path": "/home/ubuntu/.sdkman/candidates/java/17.0.6-oracle"
+    }
+  ],
   "yaml.schemas": {
     "http://json.schemastore.org/github-workflow": ".github/workflows/*.yml",
     "kubernetes": [
