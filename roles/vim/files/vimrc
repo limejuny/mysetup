@@ -722,6 +722,21 @@ let g:flake8_max_markers=500
 autocmd FileType python map <buffer> <F9> :!python %<cr>
 " "}}}
 
+" WSL {{{
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+if executable(s:clip)
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * call system('echo '.shellescape(join(v:event.regcontents, "\<CR>")).' | iconv -f utf8 -t cp949 | '.s:clip)
+  augroup END
+endif
+
+let powershell = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe'
+if executable(powershell)
+  nmap <leader>cc :call system(powershell.' -NoLogo -NoProfile -Command "Set-Clipboard -Value \$null"')<CR>
+endif
+" }}}
+
 " Customization {{{
 set fileencodings=utf-8,euc-kr,default
 set runtimepath^=~/.vim/bundle/vim-erlang-omnicomplete
