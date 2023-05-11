@@ -143,6 +143,7 @@ Plug 'tpope/vim-endwise'
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'othree/xml.vim'
 Plug 'towolf/vim-helm'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 " }}}
@@ -750,6 +751,8 @@ autocmd BufRead,BufNewFile Jenkinsfile* setf Jenkinsfile
 autocmd BufRead,BufNewFile *.jenkinsfile set ft=Jenkinsfile
 autocmd BufRead,BufNewFile *.jenkinsfile setf Jenkinsfile
 autocmd BufRead,BufNewFile *.Jenkinsfile setf Jenkinsfile
+
+" au BufRead,BufNewFile *.tf set filetype=terraform
 
 let g:copilot_filetypes = {
     \ 'Jenkinsfile' : v:true,
