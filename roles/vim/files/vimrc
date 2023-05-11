@@ -84,7 +84,6 @@ Plug 'jreybert/vimagit'
 " Bars, panels, and files
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'jeetsukumaran/vim-markology'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -335,6 +334,7 @@ nmap <silent> <leader>u :MundoToggle<CR>
 " nnoremap <silent> <Leader><space> :FZF<CR>
 nnoremap <silent> <Leader><space> :Files<CR>
 nnoremap <silent> <Leader>R :Rg<CR>
+nmap <leader>r :Rg <C-R><C-W>
 
 " }}}
 
