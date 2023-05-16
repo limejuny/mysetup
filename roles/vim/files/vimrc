@@ -78,7 +78,6 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'int3/vim-extradite'
 Plug 'jreybert/vimagit'
 
 " Bars, panels, and files
@@ -522,7 +521,7 @@ endfunction
 command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
 nmap <leader>gs :Git status<CR>
 nmap <leader>gg :copen<CR>:GGrep 
-nmap <leader>gl :Extradite!<CR>
+nmap <leader>gl :Git log<CR>
 nmap <leader>gd :Git diff<CR>
 nmap <leader>gb :Git blame<CR>
 
