@@ -96,6 +96,7 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'tpope/vim-surround'
 
 " Colorscheme
 Plug 'vim-scripts/wombat256.vim'
