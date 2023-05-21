@@ -88,3 +88,7 @@ fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[01;36m\]\$(__git_ps1)\[\033[0m\] \$ "
+
+export FLYCTL_INSTALL="$HOME/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$HOME/.oci/bin:$PATH"
+export ARGOCD_OPTS="--grpc-web"
