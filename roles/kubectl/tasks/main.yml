@@ -2,13 +2,13 @@
   become: true
   get_url:
     url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    dest: /etc/apt/trusted.gpg.d/kubernetes-archive-keyring.gpg
+    dest: /etc/apt/trusted.gpg.d/kubernetes-archive-keyring.asc
     mode: '0644'
 
 - name: Add Kubernetes Repository
   become: true
   apt_repository:
-    repo: deb [signed-by=/etc/apt/trusted.gpg.d/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+    repo: deb [signed-by=/etc/apt/trusted.gpg.d/kubernetes-archive-keyring.asc] https://apt.kubernetes.io/ kubernetes-xenial main
     state: present
     filename: kubernetes
 
