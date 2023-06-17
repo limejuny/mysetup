@@ -718,6 +718,7 @@ let g:tagbar_type_vimwiki = {
 
 " Formatter {{{
 autocmd FileType python nnoremap <leader>y :call Yapf('--style google')<cr>
+autocmd FileType * if &ft != "python" | nnoremap <leader>y :CocCommand editor.action.formatDocument<cr>
 autocmd FileType python map <buffer> <F3> :call Flake8()<cr>
 let g:flake8_show_in_file=1
 let g:flake8_max_markers=500
