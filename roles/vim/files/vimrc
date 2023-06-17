@@ -141,7 +141,7 @@ Plug 'jszakmeister/markdown2ctags', {'do' : 'cp ./markdown2ctags.py ~/.local/bin
 ""
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
-Plug 'vim-scripts/HTML-AutoCloseTag'
+" Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'othree/xml.vim'
 Plug 'towolf/vim-helm'
 Plug 'hashivim/vim-terraform'
