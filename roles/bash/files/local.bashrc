@@ -61,7 +61,7 @@ fif() {
 }
 # }}}
 
-export PATH="$HOME/.local/bin:$HOME/.rbenv/shims:$PATH:$HOME/go/bin:$HOME/.tfenv/bin"
+export PATH="$HOME/.local/bin:$HOME/.rbenv/shims:$PATH:$HOME/go/bin:$HOME/.tfenv/bin:$HOME/.istioctl/bin"
 eval "$(rbenv init -)"
 
 if [[ -v TMUX ]]; then
@@ -84,6 +84,10 @@ fi
 
 if command -v $HOME/bin/argocd &> /dev/null; then
   eval "$($HOME/bin/argocd completion bash)"
+fi
+
+if command -v $HOME/.istioctl/bin/istioctl &> /dev/null; then
+  eval "$($HOME/.istioctl/bin/istioctl completion bash)"
 fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
