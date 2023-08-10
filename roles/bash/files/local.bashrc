@@ -1,5 +1,5 @@
 function fcd {
-  cd $(find $argv -type d | fzf)
+  cd $(find $argv -type d -not -path "**/node_modules/*" -not -path "**/.git/*" -not -path "**/venv/*"| fzf)
 }
 
 alias fd='fdfind'
@@ -96,3 +96,5 @@ export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\
 export FLYCTL_INSTALL="$HOME/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$HOME/.oci/bin:$PATH"
 export ARGOCD_OPTS="--grpc-web"
+
+alias us='unset HISTFILE'
