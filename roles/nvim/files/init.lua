@@ -358,6 +358,14 @@ vim.api.nvim_set_keymap('', '<leader>ap', '<ESC>:Align', { noremap = false, sile
 
 -- }}}
 
+-- Git {{{
+vim.api.nvim_set_keymap('n', '<leader>gs', ':Git status<CR>', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gg', ':copen<CR>:Ggrep', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gl', ':Git log<CR>', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gd', ':Git diff<CR>', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = false, silent = true })
+-- }}}
+
 -- Customization {{{
 
 vim.api.nvim_create_autocmd('FileType', {
