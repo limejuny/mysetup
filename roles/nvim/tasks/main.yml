@@ -1,0 +1,44 @@
+- name: Install nvim
+  become: true
+  get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    dest: /usr/local/bin/nvim
+    mode: '0755'
+
+- name: Set to update-alternatives nvim
+  become: true
+  shell:
+    cmd: |
+      CUSTOM_NVIM_PATH=/usr/local/bin/nvim
+      update-alternatives --install /usr/bin/ex      ex      "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/editor  editor  "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/vi      vi      "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/view    view    "${CUSTOM_NVIM_PATH}" 110
+      # update-alternatives --install /usr/bin/vim     vim     "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --set ex      "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set editor  "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set vi      "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set view    "${CUSTOM_NVIM_PATH}"
+      # update-alternatives --set vim     "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set vimdiff "${CUSTOM_NVIM_PATH}"
+
+- set_fact:
+    init_lua: "{{ lookup('file', 'files/init.lua') }}"
+    coc_lua: "{{ lookup('file', 'files/coc.lua') }}"
+
+- name: Install init.lua
+  blockinfile:
+    dest: $HOME/.config/nvim/init.lua
+    content: "{{ init_lua }}"
+    state: present
+    create: true
+    marker: "-- {mark} ANSIBLE MANAGED BLOCK "
+
+- name: Install coc.lua
+  blockinfile:
+    dest: $HOME/.config/nvim/lua/coc/init.lua
+    content: "{{ coc_lua }}"
+    state: present
+    create: true
+    marker: "-- {mark} ANSIBLE MANAGED BLOCK "

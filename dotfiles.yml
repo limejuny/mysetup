@@ -49,9 +49,12 @@
     - role: node
       tags:
         - node
-    - role: vim
+    - role: nvim
       tags:
-        - vim
+        - nvim
+    # - role: vim
+    #   tags:
+    #     - vim
     - role: go
       tags:
         - go

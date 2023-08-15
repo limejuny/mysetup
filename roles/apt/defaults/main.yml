@@ -26,7 +26,8 @@ packages:
 
   # vim
   - vim-gtk
-  - neovim
+  # - neovim # -> appimage
+  - libfuse2
   - clangd
 
   # ruby
@@ -34,4 +35,4 @@ packages:
   - libyaml-dev
 
 remove_packages:
-  - snapd
+  # - snapd
