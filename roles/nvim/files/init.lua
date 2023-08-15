@@ -258,6 +258,51 @@ vim.opt.wrap = true -- Wrap lines
 
 -- }}}
 
+-- Moving around, tabs, windows and buffers {{{
+
+-- Treat long lines as break lines (useful when moving around in them)
+vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true, silent = true })
+
+-- Move between windows with Ctrl + hjkl
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+
+-- Disable highlight when <leader><cr> is pressed
+-- but preserve cursor coloring
+vim.api.nvim_set_keymap('n', '<leader><cr>', ':noh<CR>:hi Cursor guibg=#e5786d<CR>', { noremap = true, silent = true })
+
+-- Return to last edit position when opening files (You want this!)
+vim.api.nvim_create_autocmd('BufReadPost', {
+  pattern = '*',
+  callback = function()
+    if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line('$') then
+      vim.api.nvim_command('normal! g`"')
+    end
+  end,
+})
+
+-- don't close buffers when you aren't displaying them
+vim.opt.hidden = true
+
+-- previous buffer, next buffer
+vim.api.nvim_set_keymap('n', '<leader>bp', ':bp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bn', ':bn<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h', ':bp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>j', ':bp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>k', ':bn<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>l', ':bn<CR>', { noremap = true, silent = true })
+
+-- delete buffer without closing pane
+vim.api.nvim_set_keymap('', '<leader>bd', ':Bd<CR>', { noremap = true, silent = true })
+
+-- fuzzy find buffers
+vim.api.nvim_set_keymap('', '<leader>b<space>', ':Buffers<CR>', { noremap = true, silent = true })
+
+-- }}}
+
 -- nvim-tree {{{
 
 -- disable netrw at the very start of your init.lua
