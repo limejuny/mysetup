@@ -96,6 +96,10 @@ require('lazy').setup({
   'tpope/vim-surround',
   'matze/vim-move',
   'mattn/emmet-vim',
+  'Raimondi/delimitMate',
+  'tpope/vim-endwise',
+  -- 'vim-scripts/HTML-AutoCloseTag',
+  'othree/xml.vim',
 
   -- Colorscheme
   'vim-scripts/wombat256.vim',
@@ -107,13 +111,105 @@ require('lazy').setup({
     'neoclide/coc.nvim',
     branch = 'release',
   },
+
+  -- Language support
+  -- Go
+  {
+    'fatih/vim-go',
+    cmd = 'GoUpdateBinaries',
+  },
+  -- Python
+  -- Helm
+  'towolf/vim-helm',
+  -- Terraform
+  'hashivim/vim-terraform',
+
+  -- Custom bundles
+  'mhinz/vim-startify',
 })
+-- }}}
+
+-- Lua Plugins {{{
+require('coc')
 -- }}}
 
 -- {{{ Vim User Interface
 
+-- Set 7 lines to the cursor - when moving vertically using j/k
+vim.opt.so = 7 -- scrolloff
+
+-- Turn on the WiLd menu
+vim.opt.wildmenu = true
+-- Tab-complete files up to longest unambiguous prefix
+vim.opt.wildmode = 'list:longest,full'
+
+-- Always show current position,
+vim.opt.ruler = true
+vim.opt.number = true
+vim.opt.title = true
+
+-- Show trailing whitespace
+vim.opt.list = true
+-- But only interesting whitespace
+if vim.o.listchars:match('eol:$') then
+  vim.opt.listchars = 'tab:>\\ ,trail:-,extends:>,precedes:<,nbsp:+'
+end
+
+-- Height of the command bar
+vim.opt.cmdheight = 1
+
+-- Configure backspace so it acts as it should act
+vim.opt.backspace = 'eol,start,indent'
+vim.opt.whichwrap = vim.opt.whichwrap + '<,>,h,l'
+
+-- Ignore case when searching
+vim.opt.ignorecase = true
+
+-- When searching try to be smart about cases
+vim.opt.smartcase = true
+
+-- Highlight search results
+vim.opt.hlsearch = true
+
+-- Makes search act like search in modern browsers
+vim.opt.incsearch = true
+
+-- Don't redraw while executing macros (good performance config)
+vim.opt.lazyredraw = true
+
+-- For regular expressions turn magic on
+vim.opt.magic = true
+
+-- Show matching brackets when text indicator is over them
+vim.opt.showmatch = true
+-- How many tenths of a second to blink when matching brackets
+vim.opt.mat = 2
+
+-- No annoying sound on errors
+vim.opt.errorbells = false
+vim.opt.visualbell = false
+
+-- View registers
+vim.api.nvim_set_keymap('n', '<leader>rr', '<ESC>:reg<CR>', { noremap = false, silent = true })
+
+-- Turn mouse mode on
+vim.api.nvim_set_keymap('n', '<leader>ma', '<ESC>:set mouse=a<CR>', { noremap = true, silent = true })
+
+-- Turn mouse mode off
+vim.api.nvim_set_keymap('n', '<leader>mo', '<ESC>:set mouse=<CR>', { noremap = true, silent = true })
+
 -- Tagbar Toggle
 vim.api.nvim_set_keymap('n', '<leader>t', '<ESC>:TagbarToggle<CR>', { noremap = true, silent = true })
+
+-- Startify Shortcut
+vim.api.nvim_set_keymap('n', '<leader>ss', '<ESC>:Startify<CR>', { noremap = true, silent = true })
+-- nnoremap <leader>ss :Startify<cr>
+
+-- Moving cursor in insert mode
+vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-j>', '<Down>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-k>', '<Up>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', { noremap = true, silent = true })
 
 -- }}}
 
@@ -192,4 +288,3 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 -- }}}
-
