@@ -237,6 +237,27 @@ vim.api.nvim_set_keymap('n', '<leader>R', '<ESC>:Rg<CR>', { noremap = true, sile
 vim.api.nvim_set_keymap('n', '<leader>r', '<ESC>:Rg <C-R><C-W>', { noremap = false, silent = true })
 -- }}}
 
+-- Text, tab and indent related {{{
+
+-- Use spaces instead of tabs
+vim.opt.expandtab = true
+
+-- 1 tab == 2 spaces, unless the file is already
+-- using tabs, in which case tabs will be inserted.
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
+
+-- Linebreak on 500 characters
+vim.opt.linebreak = true
+vim.opt.textwidth = 500
+
+vim.opt.autoindent = true -- Auto indent
+vim.opt.smartindent = true -- Smart indent
+vim.opt.wrap = true -- Wrap lines
+
+-- }}}
+
 -- nvim-tree {{{
 
 -- disable netrw at the very start of your init.lua
