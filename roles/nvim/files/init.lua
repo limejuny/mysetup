@@ -256,6 +256,9 @@ vim.opt.autoindent = true -- Auto indent
 vim.opt.smartindent = true -- Smart indent
 vim.opt.wrap = true -- Wrap lines
 
+-- delimitMate
+vim.g.delimitMate_expand_cr = 1
+
 -- }}}
 
 -- Moving around, tabs, windows and buffers {{{
@@ -366,7 +369,25 @@ vim.api.nvim_set_keymap('n', '<leader>gd', ':Git diff<CR>', { noremap = false, s
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = false, silent = true })
 -- }}}
 
+-- Completion {{{
+vim.opt.completeopt = vim.opt.completeopt + 'longest'
+-- }}}
+
+-- Formatter {{{
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    if vim.bo.filetype ~= 'python' then
+      vim.api.nvim_set_keymap('n', '<leader>y', ':CocCommand editor.action.formatDocument<CR>', { noremap = true, silent = true })
+    end
+  end,
+})
+-- }}}
+
 -- Customization {{{
+vim.opt.clipboard = 'unnamedplus'
+
+vim.opt.fileencodings = 'utf-8,euc-kr,default'
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'json',
@@ -375,4 +396,11 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.commentstring = '// %s'
   end,
 })
+vim.go.copilot_filetypes = [[
+{
+  'Jenkinsfile' : v:true,
+  'yaml': v:true,
+}
+]]
 -- }}}
+
