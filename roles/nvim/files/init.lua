@@ -303,6 +303,13 @@ vim.api.nvim_set_keymap('', '<leader>b<space>', ':Buffers<CR>', { noremap = true
 
 -- }}}
 
+-- Status line {{{
+
+-- Always show the status line
+vim.opt.laststatus = 2
+
+-- }}}
+
 -- nvim-tree {{{
 
 -- disable netrw at the very start of your init.lua
