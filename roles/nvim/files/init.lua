@@ -225,9 +225,16 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 
+-- Open file prompt with current path
+vim.api.nvim_set_keymap('n', '<leader>e', '<ESC>:e <C-R>=expand("%:p:h") . "/"<CR>', { noremap = false, silent = true })
+
 -- Show undo tree
 vim.api.nvim_set_keymap('n', '<leader>u', '<ESC>:MundoToggle<CR>', { noremap = false, silent = true })
 
+-- Fuzzy find files
+vim.api.nvim_set_keymap('n', '<leader><space>', '<ESC>:Files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>R', '<ESC>:Rg<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>r', '<ESC>:Rg <C-R><C-W>', { noremap = false, silent = true })
 -- }}}
 
 -- nvim-tree {{{
