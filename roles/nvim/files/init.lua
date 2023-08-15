@@ -80,7 +80,11 @@ require('lazy').setup({
   'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',
   'vim-airline/vim-airline',
-  'majutsushi/tagbar',
+  {
+    'akinsho/bufferline.nvim',
+    version = '*',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+  },
   'jeetsukumaran/vim-markology',
   'junegunn/fzf',
   'junegunn/fzf.vim',
@@ -216,6 +220,55 @@ vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', { noremap = true, silent = true
 -- Colors and Fonts{{{
 vim.cmd[[colorscheme wombat256mod]]
 -- vim.cmd[[colorscheme tokyonight]]
+
+--Adjust signscolumn to match wombat
+vim.api.nvim_set_hl(0, 'SignColumn', { link = 'LineNr' })
+
+-- Use pleasant but very visible search hilighting
+vim.api.nvim_set_hl(
+  0,
+  'Search',
+  {
+    fg = '#ffffff', -- default: '#d787ff
+    bg = '#e5786d', -- default: '#626262
+    ctermfg = 'white',
+    ctermbg = 'lightmagenta',
+  }
+)
+
+-- Match wombat colors in nerd tree
+vim.api.nvim_set_hl(0, 'Directory', { fg = '#8ac6f2' })
+
+-- Searing red very visible cursor
+vim.api.nvim_set_hl(0, 'Cursor', { bg = '#ff0000' })
+
+-- Use same color behind concealed unicode characters
+vim.api.nvim_set_hl(0, 'Conceal', {})
+
+-- Use Unix as the standard file type
+vim.opt.fileformats = 'unix,dos,mac'
+
+-- Use powerline fonts for airline
+if vim.g.airline_symbols == nil then
+  vim.g.airline_symbols = {}
+end
+
+require('bufferline').setup{
+  options = {
+    numbers = 'buffer_id',
+    diagnostics = 'coc',
+    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      local icon = level:match('error') and ' ' or ' '
+      return ' ' .. icon .. count
+    end,
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    show_tab_indicators = true,
+    separator_style = 'thin',
+    always_show_bufferline = true,
+    sort_by = 'id',
+  },
+}
 -- }}}
 
 -- Files, backups and undo {{{
