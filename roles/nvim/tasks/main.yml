@@ -33,7 +33,7 @@
     content: "{{ init_lua }}"
     state: present
     create: true
-    marker: "-- {mark} ANSIBLE MANAGED BLOCK "
+    marker: "-- {mark} ANSIBLE MANAGED BLOCK"
 
 - name: Install coc.lua
   blockinfile:
@@ -41,4 +41,9 @@
     content: "{{ coc_lua }}"
     state: present
     create: true
-    marker: "-- {mark} ANSIBLE MANAGED BLOCK "
+    marker: "-- {mark} ANSIBLE MANAGED BLOCK"
+
+- name: Install coc-settings.json
+  copy:
+    src: files/coc-settings.json
+    dest: $HOME/.config/nvim/coc-settings.json
