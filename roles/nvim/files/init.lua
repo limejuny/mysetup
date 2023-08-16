@@ -88,6 +88,11 @@ require('lazy').setup({
   'jeetsukumaran/vim-markology',
   'junegunn/fzf',
   'junegunn/fzf.vim',
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.2',
+    dependencies = 'nvim-lua/plenary.nvim',
+  },
 
   -- -- Text manipulation
   'vim-scripts/Align',
@@ -284,10 +289,29 @@ vim.api.nvim_set_keymap('n', '<leader>e', '<ESC>:e <C-R>=expand("%:p:h") . "/"<C
 -- Show undo tree
 vim.api.nvim_set_keymap('n', '<leader>u', '<ESC>:MundoToggle<CR>', { noremap = false, silent = true })
 
--- Fuzzy find files
-vim.api.nvim_set_keymap('n', '<leader><space>', '<ESC>:Files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>R', '<ESC>:Rg<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>r', '<ESC>:Rg <C-R><C-W>', { noremap = false, silent = true })
+-- -- Fuzzy find files
+-- vim.api.nvim_set_keymap('n', '<leader><space>', '<ESC>:Files<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>R', '<ESC>:Rg<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>r', '<ESC>:Rg <C-R><C-W>', { noremap = false, silent = true })
+
+-- Telescope
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-j>'] = require('telescope.actions').move_selection_next,
+        ['<C-k>'] = require('telescope.actions').move_selection_previous,
+      },
+    },
+  },
+}
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader><space>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>R', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>r', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>b<space>', builtin.buffers, {})
+vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
+
 -- }}}
 
 -- Text, tab and indent related {{{
@@ -354,8 +378,8 @@ vim.api.nvim_set_keymap('n', '<leader>l', ':bn<CR>', { noremap = true, silent = 
 -- delete buffer without closing pane
 vim.api.nvim_set_keymap('', '<leader>bd', ':Bd<CR>', { noremap = true, silent = true })
 
--- fuzzy find buffers
-vim.api.nvim_set_keymap('', '<leader>b<space>', ':Buffers<CR>', { noremap = true, silent = true })
+-- -- fuzzy find buffers
+-- vim.api.nvim_set_keymap('', '<leader>b<space>', ':Buffers<CR>', { noremap = true, silent = true })
 
 -- }}}
 
