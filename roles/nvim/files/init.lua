@@ -94,7 +94,7 @@ require('lazy').setup({
     dependencies = 'nvim-lua/plenary.nvim',
   },
 
-  -- -- Text manipulation
+  -- Text manipulation
   'vim-scripts/Align',
   'simnalamburt/vim-mundo',
   'tpope/vim-commentary',
@@ -113,6 +113,37 @@ require('lazy').setup({
   -- Colorscheme
   'vim-scripts/wombat256.vim',
   -- 'folke/tokyonight.nvim',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = {
+          'bash',
+          'css',
+          'dockerfile',
+          'go',
+          'gomod',
+          'groovy',
+          'html',
+          'javascript',
+          'json',
+          'lua',
+          'python',
+          'ruby',
+          'terraform',
+          'yaml',
+        },
+        sync_install = false,
+        highlight = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
+        },
+      })
+    end,
+  },
 
   -- Autocomplete
   'github/copilot.vim',
