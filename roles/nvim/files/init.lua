@@ -481,11 +481,10 @@ vim.api.nvim_create_autocmd('BufRead,BufNewFile', {
   end,
 })
 
-vim.go.copilot_filetypes = [[
-{
-  'Jenkinsfile' : v:true,
-  'yaml': v:true,
-}
-]]
+vim.api.nvim_set_var('copilot_filetypes', {
+  Jenkinsfile = true,
+  yaml = true,
+})
+
 -- }}}
 
