@@ -449,6 +449,14 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.commentstring = '// %s'
   end,
 })
+
+vim.api.nvim_create_autocmd('BufRead,BufNewFile', {
+  pattern = '*Jenkinsfile*',
+  callback = function()
+    vim.opt.filetype = 'groovy'
+  end,
+})
+
 vim.go.copilot_filetypes = [[
 {
   'Jenkinsfile' : v:true,
