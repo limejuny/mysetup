@@ -13,18 +13,38 @@
       ~/.tfenv/bin/tfenv install {{ terraform_version }}
       ~/.tfenv/bin/tfenv use {{ terraform_version }}
   vars:
-    terraform_version: 1.4.2
+    terraform_version: 1.5.5
 
-- name: Clone terraform-lsp
-  git:
-    repo: 'https://github.com/juliosueiras/terraform-lsp.git'
-    dest: ~/.terraform-lsp
-    version: v0.0.12
+- name: Add an apt signing key for Hashicorp
+  become: true
+  get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /etc/apt/trusted.gpg.d/hashicorp.asc
+    mode: '0644'
 
-- name: Install terraform-lsp
-  shell: |
-      cd ~/.terraform-lsp
-      PATH=$PATH:/usr/local/go/bin
-      GO111MODULE=on go mod download
-      make
-      mv ~/.terraform-lsp/terraform-lsp ~/bin/terraform-lsp
+- name: Add Hashicorp Repository
+  become: true
+  apt_repository:
+    repo: deb [signed-by=/etc/apt/trusted.gpg.d/hashicorp.asc] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
+    state: present
+    filename: hashicorp
+
+- name: Install Terraform Language Server
+  become: true
+  apt:
+    name: terraform-ls
+    state: present
+
+# - name: Clone terraform-lsp
+#   git:
+#     repo: 'https://github.com/juliosueiras/terraform-lsp.git'
+#     dest: ~/.terraform-lsp
+#     version: v0.0.12
+
+# - name: Install terraform-lsp
+#   shell: |
+#       cd ~/.terraform-lsp
+#       PATH=$PATH:/usr/local/go/bin
+#       GO111MODULE=on go mod download
+#       make
+#       mv ~/.terraform-lsp/terraform-lsp ~/bin/terraform-lsp
