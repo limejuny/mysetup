@@ -98,6 +98,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'tpope/vim-surround'
 Plug 'matze/vim-move'
+Plug 'mattn/emmet-vim'
 
 " Colorscheme
 Plug 'vim-scripts/wombat256.vim'
@@ -118,7 +119,7 @@ Plug 'vim-ruby/vim-ruby', { 'for': [ 'ruby', 'eruby' ] }
 Plug 'ruby-formatter/rufo-vim', { 'for': [ 'ruby', 'eruby' ] }
 
 " Golang
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Python
 Plug 'mindriot101/vim-yapf', { 'for': 'python' }
@@ -763,5 +764,7 @@ let g:copilot_filetypes = {
     \ }
 
 " let g:coc_disable_startup_warning = 1
+
+" set cursorcolumn
 
 " }}}

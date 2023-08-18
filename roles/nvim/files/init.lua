@@ -200,7 +200,7 @@ vim.opt.cmdheight = 1
 
 -- Configure backspace so it acts as it should act
 vim.opt.backspace = 'eol,start,indent'
-vim.opt.whichwrap = vim.opt.whichwrap + '<,>,h,l'
+-- vim.opt.whichwrap = vim.opt.whichwrap + '<,>,h,l'
 
 -- Ignore case when searching
 vim.opt.ignorecase = true
@@ -243,7 +243,8 @@ vim.api.nvim_set_keymap('n', '<leader>t', '<ESC>:TagbarToggle<CR>', { noremap = 
 
 -- Startify Shortcut
 vim.api.nvim_set_keymap('n', '<leader>ss', '<ESC>:Startify<CR>', { noremap = true, silent = true })
--- nnoremap <leader>ss :Startify<cr>
+vim.api.nvim_set_var('startify_session_persistence', 1)
+vim.api.nvim_set_var('startify_disable_at_vimenter', 1)
 
 -- Moving cursor in insert mode
 vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', { noremap = true, silent = true })
@@ -254,11 +255,27 @@ vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', { noremap = true, silent = true
 -- }}}
 
 -- Colors and Fonts{{{
-vim.cmd[[colorscheme wombat256mod]]
--- vim.cmd[[colorscheme tokyonight]]
+local ok, _ = pcall(function()
+  vim.cmd[[colorscheme wombat256mod]]
+  -- vim.cmd[[colorscheme tokyonight]]
+end)
+if not ok then
+  vim.cmd[[colorscheme default]]
+end
 
---Adjust signscolumn to match wombat
+-- Adjust signscolumn to match wombat
 vim.api.nvim_set_hl(0, 'SignColumn', { link = 'LineNr' })
+
+-- Update default highlighting
+local function update_hl(group, opts)
+  local hl = vim.api.nvim_get_hl_by_name(group, true)
+  for k, v in pairs(opts) do
+    hl[k] = v
+  end
+  vim.api.nvim_set_hl(0, group, hl)
+end
+-- Use no italic for comments
+update_hl('String', { italic = false })
 
 -- Use pleasant but very visible search hilighting
 vim.api.nvim_set_hl(
@@ -292,6 +309,9 @@ end
 require('bufferline').setup{
   options = {
     numbers = 'buffer_id',
+    indicator = {
+      style = 'underline',
+    },
     diagnostics = 'coc',
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
       local icon = level:match('error') and ' ' or ' '
@@ -299,10 +319,10 @@ require('bufferline').setup{
     end,
     show_buffer_close_icons = false,
     show_close_icon = false,
-    show_tab_indicators = true,
-    separator_style = 'thin',
-    always_show_bufferline = true,
-    sort_by = 'id',
+    -- show_tab_indicators = true,
+    -- separator_style = 'thin',
+    -- always_show_bufferline = true,
+    -- sort_by = 'id',
   },
 }
 -- }}}
@@ -339,7 +359,7 @@ require('telescope').setup{
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader><space>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>R', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>r', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>x', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>b<space>', builtin.buffers, {})
 vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
 
@@ -395,6 +415,9 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
+-- Remember info about open buffers on close
+vim.cmd[[set viminfo^=%]]
+
 -- don't close buffers when you aren't displaying them
 vim.opt.hidden = true
 
@@ -438,13 +461,18 @@ require('nvim-tree').setup({
   },
   sort_by = 'case_sensitive',
   view = {
-    width = 30,
+    width = 40,
   },
-  renderer = {
-    group_empty = true,
-  },
+  -- renderer = {
+  --   group_empty = true,
+  -- },
   filters = {
     dotfiles = true,
+  },
+  update_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true,
   },
 })
 
