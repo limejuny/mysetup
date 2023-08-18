@@ -1,0 +1,42 @@
+{
+  "diagnostic.errorSign": "✖",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.hintSign": "➤",
+  "suggest.noselect": false,
+  "codeLens.enable": true,
+  "signature.enable": true,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "coc.preferences.formatOnType": true,
+  "java.jdt.ls.java.home": "/home/{{ remote_user }}/.sdkman/candidates/java/current",
+  "java.jdt.ls.vmargs": "-javaagent:/home/{{ remote_user }}/bin/lombok/lombok.jar",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "/home/{{ remote_user }}/.sdkman/candidates/java/11.0.12-open"
+    },
+    {
+      "name": "JavaSE-17",
+      "path": "/home/{{ remote_user }}/.sdkman/candidates/java/17.0.6-oracle"
+    }
+  ],
+  "yaml.schemas": {
+    "http://json.schemastore.org/github-workflow": ".github/workflows/*.yml",
+    "kubernetes": [
+      "k8s/**/*.yml",
+      "k8s/**/*.yaml"
+    ]
+  },
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
+    }
+  }
+}

@@ -1,11 +1,27 @@
-- name: Install nvim
+- name: Install nvim (x86_64)
   become: true
   get_url:
     url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     dest: /usr/local/bin/nvim
     mode: '0755'
+  when: ansible_architecture == "x86_64"
 
-- name: Set to update-alternatives nvim
+- name: Install nvim (aarch64)
+  become: true
+  community.general.snap:
+    name: nvim
+    classic: yes
+  when: ansible_architecture == "aarch64"
+
+- name: Install snap-wrapper
+  become: true
+  copy:
+    src: files/nvim
+    dest: /usr/local/bin/nvim
+    mode: '0755'
+  when: ansible_architecture == "aarch64"
+
+- name: Set to update-alternatives nvim (x86_64)
   become: true
   shell:
     cmd: |
@@ -22,10 +38,33 @@
       update-alternatives --set view    "${CUSTOM_NVIM_PATH}"
       # update-alternatives --set vim     "${CUSTOM_NVIM_PATH}"
       update-alternatives --set vimdiff "${CUSTOM_NVIM_PATH}"
+  when: ansible_architecture == "x86_64"
+
+- name: Set to update-alternatives nvim (aarch64)
+  become: true
+  shell:
+    cmd: |
+      CUSTOM_NVIM_PATH=/usr/local/bin/nvim
+      update-alternatives --install /usr/bin/ex      ex      "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/editor  editor  "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/vi      vi      "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/view    view    "${CUSTOM_NVIM_PATH}" 110
+      # update-alternatives --install /usr/bin/vim     vim     "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
+      update-alternatives --set ex      "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set editor  "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set vi      "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set view    "${CUSTOM_NVIM_PATH}"
+      # update-alternatives --set vim     "${CUSTOM_NVIM_PATH}"
+      update-alternatives --set vimdiff "${CUSTOM_NVIM_PATH}"
+  when: ansible_architecture == "aarch64"
+
 
 - set_fact:
     init_lua: "{{ lookup('file', 'files/init.lua') }}"
     coc_lua: "{{ lookup('file', 'files/coc.lua') }}"
+    go_vim: "{{ lookup('file', 'files/go.vim') }}"
+    groovy_vim: "{{ lookup('file', 'files/groovy.vim') }}"
 
 - name: Install init.lua
   blockinfile:
@@ -44,6 +83,71 @@
     marker: "-- {mark} ANSIBLE MANAGED BLOCK"
 
 - name: Install coc-settings.json
-  copy:
-    src: files/coc-settings.json
+  template:
+    src: coc-settings.j2
     dest: $HOME/.config/nvim/coc-settings.json
+
+- name: Install init.lua (root)
+  become: true
+  blockinfile:
+    dest: $HOME/.config/nvim/init.lua
+    content: "{{ init_lua }}"
+    state: present
+    create: true
+    marker: "-- {mark} ANSIBLE MANAGED BLOCK"
+
+- name: Install coc.lua (root)
+  become: true
+  blockinfile:
+    dest: $HOME/.config/nvim/lua/coc/init.lua
+    content: "{{ coc_lua }}"
+    state: present
+    create: true
+    marker: "-- {mark} ANSIBLE MANAGED BLOCK"
+
+- name: Install coc-settings.json (root)
+  become: true
+  template:
+    src: coc-settings.j2
+    dest: $HOME/.config/nvim/coc-settings.json
+
+- name: Install Lazy.nvim plugins
+  command: vi --headless +qall +Lazy
+
+- name: Install Lazy.nvim plugins (root)
+  become: true
+  command: vi --headless +qall +Lazy
+
+- name: Install go.vim
+  blockinfile:
+    dest: $HOME/.config/nvim/ftplugin/go.vim
+    content: "{{ go_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+
+- name: Install go.vim (root)
+  become: true
+  blockinfile:
+    dest: $HOME/.config/nvim/ftplugin/go.vim
+    content: "{{ go_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+
+- name: Install groovy.vim
+  blockinfile:
+    dest: $HOME/.config/nvim/ftplugin/groovy.vim
+    content: "{{ groovy_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+
+- name: Install groovy.vim (root)
+  become: true
+  blockinfile:
+    dest: $HOME/.config/nvim/ftplugin/groovy.vim
+    content: "{{ groovy_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
