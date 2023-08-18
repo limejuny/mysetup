@@ -28,7 +28,7 @@
   prune = "!git remote | xargs -n 1 git remote prune"
   pp = "pull --prune"
 [commit]
-  template = /home/ubuntu/.tmpl.md
+  template = /home/{{ remote_user }}/.tmpl.md
   gpgsign = true
 [color "grep"]
   linenumber = yellow bold
