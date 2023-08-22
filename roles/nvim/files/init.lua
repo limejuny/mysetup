@@ -478,6 +478,22 @@ require('nvim-tree').setup({
 
 vim.api.nvim_set_keymap('n', '<leader>f', '<ESC>:NvimTreeToggle<CR>', { noremap = true, silent = true })
 
+-- if no args, set cwd to current file directory, and one args, set cwd to arg
+vim.api.nvim_create_user_command(
+  'Cwd',
+  function(opts)
+    local args = opts.args or nil
+    if args == nil or args == '' then
+      vim.cmd('cd %:p:h')
+    else
+      vim.cmd('cd ' .. args)
+    end
+  end,
+  {
+    nargs = '?'
+  }
+)
+
 -- }}}
 
 -- Alignment {{{
@@ -546,4 +562,3 @@ vim.api.nvim_set_var('copilot_filetypes', {
 })
 
 -- }}}
-
