@@ -142,11 +142,26 @@
     state: present
     create: true
     marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+- name: Install java.vim
+  blockinfile:
+    dest: $HOME/.config/nvim/ftplugin/java.vim
+    content: "{{ groovy_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
 
 - name: Install groovy.vim (root)
   become: true
   blockinfile:
     dest: $HOME/.config/nvim/ftplugin/groovy.vim
+    content: "{{ groovy_vim }}"
+    state: present
+    create: true
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+- name: Install java.vim (root)
+  become: true
+  blockinfile:
+    dest: $HOME/.config/nvim/ftplugin/java.vim
     content: "{{ groovy_vim }}"
     state: present
     create: true
