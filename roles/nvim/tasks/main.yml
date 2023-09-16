@@ -166,3 +166,8 @@
     state: present
     create: true
     marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+
+- name: Copy Jenkins GDSL
+  copy:
+    src: files/cmp-jenkinsfile.gdsl
+    dest: $HOME/.cache/nvim/cmp-jenkinsfile.gdsl

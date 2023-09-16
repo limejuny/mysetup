@@ -10,6 +10,7 @@
       - ~/.vim/after/ftplugin
       - ~/.config/nvim
       - ~/.local/share/nvim/site/autoload
+      - ~/.cache/nvim
 
 - name: Create directory for root
   become: true
@@ -23,6 +24,7 @@
       - ~/.vim/after/ftplugin
       - ~/.config/nvim
       - ~/.local/share/nvim/site/autoload
+      - ~/.cache/nvim
 
 - name: Create symlink
   file:
