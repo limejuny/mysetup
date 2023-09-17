@@ -581,6 +581,30 @@ cmp.setup.filetype({ "Jenkinsfile", "groovy" }, {
   }),
 })
 
+vim.api.nvim_create_user_command(
+  'CmpDisable',
+  function(opts)
+    require('cmp').setup({
+      enabled = false,
+    })
+  end,
+  {
+    nargs = '?'
+  }
+)
+
+vim.api.nvim_create_user_command(
+  'CmpEnable',
+  function(opts)
+    require('cmp').setup({
+      enabled = true,
+    })
+  end,
+  {
+    nargs = '?'
+  }
+)
+
 -- }}}
 
 -- Formatter {{{
