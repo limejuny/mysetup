@@ -312,6 +312,13 @@ if vim.g.airline_symbols == nil then
   vim.g.airline_symbols = {}
 end
 
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'CocStatusChange',
+  callback = function()
+    vim.cmd[[redrawstatus]]
+  end,
+})
+
 require('bufferline').setup{
   options = {
     numbers = 'buffer_id',
