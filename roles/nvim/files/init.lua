@@ -75,6 +75,8 @@ require('lazy').setup({
   -- Git
   'tpope/vim-fugitive',
   'jreybert/vimagit',
+  'lewis6991/gitsigns.nvim',
+  'rbong/vim-flog',
 
   -- Bars, panels, and files
   'nvim-tree/nvim-tree.lua',
@@ -533,6 +535,18 @@ vim.api.nvim_set_keymap('n', '<leader>gg', ':copen<CR>:Ggrep', { noremap = false
 vim.api.nvim_set_keymap('n', '<leader>gl', ':Git log<CR>', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', ':Git diff<CR>', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = false, silent = true })
+
+require('gitsigns').setup {
+  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 0,
+    ignore_whitespace = false,
+  },
+  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+}
+
 -- }}}
 
 -- Completion {{{
