@@ -93,7 +93,8 @@ require('lazy').setup({
   'junegunn/fzf.vim',
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
+    -- tag = '0.1.3',
+    branch = 'master',
     dependencies = 'nvim-lua/plenary.nvim',
   },
 
