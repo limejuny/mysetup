@@ -635,9 +635,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function()
-    if vim.bo.filetype ~= 'python' then
-      vim.api.nvim_set_keymap('n', '<leader>y', ':CocCommand editor.action.formatDocument<CR>', { noremap = true, silent = true })
-    end
+    vim.api.nvim_set_keymap('n', '<leader>y', ':CocCommand editor.action.formatDocument<CR>', { noremap = true, silent = true })
   end,
 })
 -- }}}
