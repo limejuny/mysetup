@@ -316,6 +316,8 @@ vim.opt.fileformats = 'unix,dos,mac'
 if vim.g.airline_symbols == nil then
   vim.g.airline_symbols = {}
 end
+vim.g.airline_powerline_fonts = 1
+vim.g.airline_symbols.space = '\\ua0'
 
 vim.api.nvim_create_autocmd('User', {
   pattern = 'CocStatusChange',
@@ -667,13 +669,6 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     -- vim.cmd([[syntax match Comment +\/\/.\+$+]])
     vim.opt_local.commentstring = '// %s'
-  end,
-})
-
-vim.api.nvim_create_autocmd('BufRead,BufNewFile', {
-  pattern = '*Jenkinsfile*',
-  callback = function()
-    vim.opt.filetype = 'groovy'
   end,
 })
 

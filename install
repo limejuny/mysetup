@@ -12,7 +12,7 @@ if ! [ -x "$(command -v ansible)" ]; then
   sudo apt -y install ansible
 fi
 
-ansible-playbook -i ./hosts ./dotfiles.yml --tags $tags
+ansible-playbook -i ./hosts ./dotfiles.yml --tags $tags -f 30
 
 echo "dotfiles: Bootstrap complete"
 echo "Successfully set up dev environment."
