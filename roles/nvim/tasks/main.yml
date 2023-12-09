@@ -92,7 +92,7 @@
 - name: Install init.lua (root)
   become: true
   blockinfile:
-    dest: $HOME/.config/nvim/init.lua
+    dest: /root/.config/nvim/init.lua
     content: "{{ init_lua }}"
     state: present
     create: true
@@ -101,7 +101,7 @@
 - name: Install coc.lua (root)
   become: true
   blockinfile:
-    dest: $HOME/.config/nvim/lua/coc/init.lua
+    dest: /root/.config/nvim/lua/coc/init.lua
     content: "{{ coc_lua }}"
     state: present
     create: true
@@ -111,7 +111,7 @@
   become: true
   template:
     src: coc-settings.j2
-    dest: $HOME/.config/nvim/coc-settings.json
+    dest: /root/.config/nvim/coc-settings.json
 
 - name: Install Lazy.nvim plugins
   command: vi --headless +qall +Lazy
@@ -131,7 +131,7 @@
 - name: Install go.vim (root)
   become: true
   blockinfile:
-    dest: $HOME/.config/nvim/ftplugin/go.vim
+    dest: /root/.config/nvim/ftplugin/go.vim
     content: "{{ go_vim }}"
     state: present
     create: true
@@ -155,7 +155,7 @@
 - name: Install groovy.vim (root)
   become: true
   blockinfile:
-    dest: $HOME/.config/nvim/ftplugin/groovy.vim
+    dest: /root/.config/nvim/ftplugin/groovy.vim
     content: "{{ groovy_vim }}"
     state: present
     create: true
@@ -163,7 +163,7 @@
 - name: Install java.vim (root)
   become: true
   blockinfile:
-    dest: $HOME/.config/nvim/ftplugin/java.vim
+    dest: /root/.config/nvim/ftplugin/java.vim
     content: "{{ groovy_vim }}"
     state: present
     create: true
