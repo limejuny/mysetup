@@ -8,6 +8,7 @@ packages:
   - open-iscsi
   - nfs-common
   - bash-completion
+  - xclip
 
   # python
   - python3
