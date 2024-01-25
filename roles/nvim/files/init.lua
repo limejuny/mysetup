@@ -77,6 +77,19 @@ require('lazy').setup({
   'jreybert/vimagit',
   'lewis6991/gitsigns.nvim',
   'rbong/vim-flog',
+  'sindrets/diffview.nvim',
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      -- "ibhagwan/fzf-lua",              -- optional
+    },
+    config = true
+  },
 
   -- Bars, panels, and files
   'nvim-tree/nvim-tree.lua',
