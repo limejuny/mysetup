@@ -565,6 +565,9 @@ require('gitsigns').setup {
   current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
 }
 
+-- Tagbar Toggle
+vim.api.nvim_set_keymap('n', '<leader>N', '<ESC>:Neogit<CR>', { noremap = true, silent = true })
+
 -- }}}
 
 -- Completion {{{
