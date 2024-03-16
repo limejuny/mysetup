@@ -129,8 +129,9 @@ require('lazy').setup({
   'othree/xml.vim',
 
   -- Colorscheme
-  'vim-scripts/wombat256.vim',
+  -- 'vim-scripts/wombat256.vim',
   -- 'folke/tokyonight.nvim',
+  'sainnhe/sonokai',
 
   -- Code Syntax
   {
@@ -280,8 +281,9 @@ vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', { noremap = true, silent = true
 
 -- Colors and Fonts{{{
 local ok, _ = pcall(function()
-  vim.cmd[[colorscheme wombat256mod]]
+  -- vim.cmd[[colorscheme wombat256mod]]
   -- vim.cmd[[colorscheme tokyonight]]
+  vim.cmd[[colorscheme sonokai]]
 end)
 if not ok then
   vim.cmd[[colorscheme default]]
