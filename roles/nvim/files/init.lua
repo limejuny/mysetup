@@ -97,7 +97,8 @@ require('lazy').setup({
   'vim-airline/vim-airline',
   {
     'akinsho/bufferline.nvim',
-    version = '*',
+    -- version = '*',
+    branch = 'main',
     dependencies = 'nvim-tree/nvim-web-devicons',
   },
   'majutsushi/tagbar',
