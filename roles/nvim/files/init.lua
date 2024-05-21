@@ -117,7 +117,7 @@ require('lazy').setup({
   -- Text manipulation
   'vim-scripts/Align',
   'simnalamburt/vim-mundo',
-  'tpope/vim-commentary',
+  -- 'tpope/vim-commentary',
   'godlygeek/tabular',
   -- 'michaeljsmith/vim-indent-object',
   'easymotion/vim-easymotion',
