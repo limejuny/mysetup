@@ -94,7 +94,8 @@ require('lazy').setup({
   -- Bars, panels, and files
   'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',
-  'vim-airline/vim-airline',
+  -- 'vim-airline/vim-airline',
+  'nvim-lualine/lualine.nvim',
   {
     'akinsho/bufferline.nvim',
     version = '*',
@@ -369,11 +370,60 @@ vim.api.nvim_set_hl(0, 'Conceal', {})
 vim.opt.fileformats = 'unix,dos,mac'
 
 -- Use powerline fonts for airline
-if vim.g.airline_symbols == nil then
-  vim.g.airline_symbols = {}
-end
-vim.g.airline_powerline_fonts = 1
-vim.g.airline_symbols.space = '\\ua0'
+-- if vim.g.airline_symbols == nil then
+--   vim.g.airline_symbols = {}
+-- end
+-- vim.g.airline_powerline_fonts = 1
+-- vim.g.airline_symbols.space = '\\ua0'
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {
+      {
+        'filename',
+        path = 1,   -- 0: Just the filename
+                    -- 1: Relative path
+                    -- 2: Absolute path
+                    -- 3: Absolute path, with tilde as the home directory
+                    -- 4: Filename and parent dir, with tilde as the home directory
+      }
+    },
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
 
 vim.api.nvim_create_autocmd('User', {
   pattern = 'CocStatusChange',
