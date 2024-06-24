@@ -135,6 +135,17 @@ require('lazy').setup({
   -- Colorscheme
   -- 'vim-scripts/wombat256.vim',
   -- 'folke/tokyonight.nvim',
+  -- {
+  --   'ribru17/bamboo.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('bamboo').setup {
+  --       -- optional configuration here
+  --     }
+  --     require('bamboo').load()
+  --   end,
+  -- },
   'sainnhe/sonokai',
 
   -- Code Syntax
@@ -579,7 +590,7 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
-require('nvim-tree').setup({
+nvimtree = require('nvim-tree').setup({
   actions = {
     open_file = {
       quit_on_open = true,
@@ -780,6 +791,13 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.commentstring = '// %s'
   end,
 })
+
+-- vim.api.nvim_create_autocmd('BufRead,BufNewFile', {
+--   pattern = '*Jenkinsfile*',
+--   callback = function()
+--     vim.opt.filetype = 'groovy'
+--   end,
+-- })
 
 vim.api.nvim_set_var('copilot_filetypes', {
   Jenkinsfile = true,
