@@ -751,6 +751,15 @@ vim.api.nvim_create_user_command(
   }
 )
 
+vim.g.user_emmet_settings = {
+  eruby =  {
+    extends = 'html',
+    snippets = {
+      erb =  '<%= | %>\n\t${child}<% end %>'
+    }
+  }
+}
+
 -- }}}
 
 -- Formatter {{{
