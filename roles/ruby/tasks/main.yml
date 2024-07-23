@@ -3,9 +3,10 @@
     cmd: |
         rbenv init
         mkdir -p "$(rbenv root)"/plugins
-        git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build || (git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build fetch && git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build reset --hard origin/master)
-        rbenv install 3.3.0
-        rbenv global 3.3.0
+        # git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build || (git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build fetch && git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build reset --hard origin/master)
+        git clone https://github.com/garnieretienne/rvm-download.git ~/.rbenv/plugins/rvm-download
+        rbenv download 3.2.3
+        rbenv global 3.2.3
 
 - name: Install rbenv/ruby for root
   become: true
@@ -13,9 +14,10 @@
     cmd: |
         rbenv init
         mkdir -p "$(rbenv root)"/plugins
-        git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build || (git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build fetch && git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build reset --hard origin/master)
-        rbenv install 3.3.0
-        rbenv global 3.3.0
+        # git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build || (git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build fetch && git --git-dir "$(rbenv root)"/plugins/ruby-build/.git --work-tree "$(rbenv root)"/plugins/ruby-build reset --hard origin/master)
+        git clone https://github.com/garnieretienne/rvm-download.git ~/.rbenv/plugins/rvm-download
+        rbenv download 3.2.3
+        rbenv global 3.2.3
 
 - name: Install gem
   shell:
