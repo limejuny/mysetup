@@ -8,6 +8,7 @@ if [ -z $tags ]; then
 fi
 
 if ! [ -x "$(command -v ansible)" ]; then
+  sudo add-apt-repository --yes --update ppa:ansible/ansible
   sudo apt update
   sudo apt -y install ansible
 fi
