@@ -27,3 +27,4 @@
   command: helm plugin install {{ item }}
   with_items:
     - https://github.com/databus23/helm-diff
+    - https://github.com/jkroepke/helm-secrets
