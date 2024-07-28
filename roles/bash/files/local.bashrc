@@ -61,15 +61,11 @@ fif() {
 }
 # }}}
 
-export PATH="$HOME/.local/bin:$HOME/.rbenv/shims:$PATH:$HOME/go/bin:$HOME/.tfenv/bin:$HOME/.istioctl/bin"
+export PATH="$HOME/.local/bin:$HOME/.rbenv/shims:$HOME/go/bin:$HOME/.tfenv/bin:$HOME/.istioctl/bin:$HOME/.oci/bin:$PATH"
 eval "$(rbenv init -)"
 
 if [[ -v TMUX ]]; then
   unset HISTFILE
-fi
-
-if command -v minikube &> /dev/null; then
-  eval "$(minikube completion bash)"
 fi
 
 source <(kubectl completion bash)
@@ -86,15 +82,13 @@ if command -v $HOME/bin/argocd &> /dev/null; then
   eval "$($HOME/bin/argocd completion bash)"
 fi
 
-if command -v $HOME/.istioctl/bin/istioctl &> /dev/null; then
-  eval "$($HOME/.istioctl/bin/istioctl completion bash)"
-fi
+# if command -v $HOME/.istioctl/bin/istioctl &> /dev/null; then
+#   eval "$($HOME/.istioctl/bin/istioctl completion bash)"
+# fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\[\033[01;36m\]\$(__git_ps1)\[\033[0m\] \$ "
 
-export FLYCTL_INSTALL="$HOME/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$HOME/.oci/bin:$PATH"
 export ARGOCD_OPTS="--grpc-web"
 
 alias us='unset HISTFILE'
