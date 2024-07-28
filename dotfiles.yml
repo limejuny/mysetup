@@ -37,7 +37,7 @@
         - rg
     - role: java
       tags:
-        -java
+        - java
     - role: python
       tags:
         - python

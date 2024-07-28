@@ -11,7 +11,7 @@
   shell: curl -s "https://get.sdkman.io" | bash
   when: is_sdkman_installed.stdout == "no"
 
-- name: Install openjdk 11.0.12
-  shell: source ~/.sdkman/bin/sdkman-init.sh && sdk install java 11.0.12-open
+- name: Install oracle jdk 17.0.11
+  shell: source ~/.sdkman/bin/sdkman-init.sh && sdk install java 17.0.11-oracle
   args:
     executable: /bin/bash
