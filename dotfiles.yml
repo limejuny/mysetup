@@ -23,9 +23,6 @@
     - role: helm
       tags:
         - helm
-    - role: compose
-      tags:
-        - compose
     - role: apt
       tags:
         - apt
