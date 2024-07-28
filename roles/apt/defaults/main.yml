@@ -13,8 +13,6 @@ packages:
   # python
   - python3
   - python3-dev
-  - python2
-  - python2-dev
 
   # tools
   - htop
@@ -27,8 +25,7 @@ packages:
   - peco
 
   # vim
-  - vim-gtk
-  # - neovim # -> appimage
+  - vim-gtk3
   - libfuse2
   - clangd
 
