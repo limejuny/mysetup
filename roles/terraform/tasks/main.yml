@@ -13,7 +13,7 @@
       ~/.tfenv/bin/tfenv install {{ terraform_version }}
       ~/.tfenv/bin/tfenv use {{ terraform_version }}
   vars:
-    terraform_version: 1.5.5
+    terraform_version: 1.9.3
 
 - name: Add an apt signing key for Hashicorp
   become: true
