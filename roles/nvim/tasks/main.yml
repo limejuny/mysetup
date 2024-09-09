@@ -1,7 +1,7 @@
 - name: Install nvim (x86_64)
   become: true
   get_url:
-    url: https://github.com/neovim/neovim/releases/download/v0.10.0/nvim.appimage
+    url: https://github.com/neovim/neovim/releases/download/v0.10.1/nvim.appimage
     dest: /usr/local/bin/nvim
     mode: '0755'
   when: ansible_architecture == "x86_64"
@@ -11,7 +11,7 @@
   community.general.snap:
     name: nvim
     classic: yes
-    channel: edge # for 0.10.0
+    channel: stable # for 0.10.0
   when: ansible_architecture == "aarch64"
 
 - name: Install snap-wrapper
