@@ -767,6 +767,7 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function()
     vim.api.nvim_set_keymap('n', '<leader>y', ':CocCommand editor.action.formatDocument<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap('n', '<leader>i', ':CocCommand document.toggleInlayHint<CR>', { noremap = true, silent = true })
   end,
 })
 -- }}}
