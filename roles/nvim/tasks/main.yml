@@ -113,15 +113,15 @@
     dest: /root/.config/nvim/coc-settings.json
 
 - name: Install Lazy.nvim plugins
-  command:
-    - vi --headless '+Lazy! update' +qa
-    - vi --headless '+Lazy! sync' +qa
+  shell: |
+    | vi --headless '+Lazy! update' +qa
+    | vi --headless '+Lazy! sync' +qa
 
 - name: Install Lazy.nvim plugins (root)
   become: true
-  command:
-    - vi --headless '+Lazy! update' +qa
-    - vi --headless '+Lazy! sync' +qa
+  shell: |
+    | vi --headless '+Lazy! update' +qa
+    | vi --headless '+Lazy! sync' +qa
 
 - name: Install go.vim
   blockinfile:
