@@ -1,9 +1,9 @@
 - name: Install nvm
-  shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
 - name: Install nvm for root
   become: true
-  shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  shell: curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
 - name: Install node
   shell: /bin/bash -c "source ~/.nvm/nvm.sh && nvm install --lts node"
