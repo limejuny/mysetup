@@ -106,14 +106,14 @@
 
 - name: Install Lazy.nvim plugins
   shell: |
-    | vi --headless '+Lazy! update' +qa
-    | vi --headless '+Lazy! sync' +qa
+    vi --headless '+Lazy! update' +qa
+    vi --headless '+Lazy! sync' +qa
 
 - name: Install Lazy.nvim plugins (root)
   become: true
   shell: |
-    | vi --headless '+Lazy! update' +qa
-    | vi --headless '+Lazy! sync' +qa
+    vi --headless '+Lazy! update' +qa
+    vi --headless '+Lazy! sync' +qa
 
 - name: Install go.vim
   blockinfile:
