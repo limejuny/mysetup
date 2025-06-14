@@ -13,21 +13,6 @@
     dest: /usr/local/bin/nvim
     mode: '0755'
   when: ansible_architecture == "aarch64"
-# - name: Install nvim (aarch64)
-#   become: true
-#   community.general.snap:
-#     name: nvim
-#     classic: yes
-#     channel: stable # for 0.10.0
-#   when: ansible_architecture == "aarch64"
-
-- name: Install snap-wrapper
-  become: true
-  copy:
-    src: files/nvim
-    dest: /usr/local/bin/nvim
-    mode: '0755'
-  when: ansible_architecture == "aarch64"
 
 - name: Set to update-alternatives nvim (x86_64)
   become: true
