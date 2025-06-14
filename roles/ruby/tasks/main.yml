@@ -25,8 +25,8 @@
 - name: Install ruby (aarch64)
   shell:
     cmd: |
-        rbenv install 3.2.3
-        rbenv global 3.2.3
+        rbenv install 3.4.4
+        rbenv global 3.4.4
   # when: ansible_architecture == "aarch64"
 
 # - name: Install ruby for root (x86_64)
@@ -41,8 +41,8 @@
   become: true
   shell:
     cmd: |
-        rbenv install 3.2.3
-        rbenv global 3.2.3
+        rbenv install 3.4.4
+        rbenv global 3.4.4
   # when: ansible_architecture == "aarch64"
 
 - name: Install gem
