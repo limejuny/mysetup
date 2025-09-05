@@ -1,14 +1,14 @@
 - name: Add an apt signing key for Helm
   become: true
   get_url:
-    url: https://baltocdn.com/helm/signing.asc
-    dest: /etc/apt/trusted.gpg.d/helm.asc
+    url: https://packages.buildkite.com/helm-linux/helm-debian/gpgkey
+    dest: /usr/share/keyrings/helm.asc
     mode: '0644'
 
 - name: Add Helm Repository
   become: true
   apt_repository:
-    repo: deb [signed-by=/etc/apt/trusted.gpg.d/helm.asc] https://baltocdn.com/helm/stable/debian/ all main
+    repo: deb [signed-by=/usr/share/keyrings/helm.asc] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main
     state: present
     filename: helm-stable-debian
 
