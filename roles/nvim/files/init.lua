@@ -67,7 +67,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- Support bundles
-  'ervandew/supertab',
+  {
+    'ervandew/supertab',
+    branch = 'main'
+  },
   'moll/vim-bbye',
   'nathanaelkane/vim-indent-guides',
   'vim-scripts/gitignore',
