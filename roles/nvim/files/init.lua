@@ -713,23 +713,23 @@ cmp.setup.filetype('gitcommit', {
   })
 })
 
-cmp.setup.filetype({ "Jenkinsfile", "groovy" }, {
-  sources = {
-    {
-      name = "jenkinsfile",
-      option = {
-        jenkins_url = "https://jenkins.co",
-      },
-    },
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  }),
-})
+-- cmp.setup.filetype({ "Jenkinsfile", "groovy" }, {
+--   sources = {
+--     {
+--       name = "jenkinsfile",
+--       option = {
+--         jenkins_url = "https://jenkins.co",
+--       },
+--     },
+--   },
+--   mapping = cmp.mapping.preset.insert({
+--     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+--     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+--     ['<C-Space>'] = cmp.mapping.complete(),
+--     ['<C-e>'] = cmp.mapping.abort(),
+--     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+--   }),
+-- })
 
 vim.api.nvim_create_user_command(
   'CmpDisable',
