@@ -1,0 +1,7 @@
+- name: Set up workstation
+  hosts: "k9s,local"
+  connection: ssh
+  roles:
+    - role: k9s
+      tags:
+        - k9s

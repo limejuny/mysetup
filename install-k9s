@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+if ! [ -x "$(command -v ansible)" ]; then
+  sudo add-apt-repository --yes --update ppa:ansible/ansible
+  sudo apt update
+  sudo apt -y install ansible
+fi
+
+ansible-playbook -i ./hosts-k9s ./dotfiles-k9s.yml --tags k9s -f 30
+
+echo "dotfiles: Bootstrap complete"
+echo "Successfully set up dev environment."

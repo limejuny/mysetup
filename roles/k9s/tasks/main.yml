@@ -1,0 +1,35 @@
+- name: Install k9s binary
+  vars:
+    k9s_version: "v0.50.15"
+  block:
+    - name: Determine system architecture
+      ansible.builtin.set_fact:
+        arch_type: "{{ 'amd64' if ansible_architecture == 'x86_64' else 'arm64' if ansible_architecture == 'aarch64' else 'unsupported' }}"
+
+    - name: Fail if unsupported architecture
+      ansible.builtin.fail:
+        msg: "Unsupported architecture: {{ ansible_architecture }}"
+      when: arch_type == 'unsupported'
+
+    - name: Download k9s tarball
+      ansible.builtin.get_url:
+        url: "https://github.com/derailed/k9s/releases/download/{{ k9s_version }}/k9s_Linux_{{ arch_type }}.tar.gz"
+        dest: "/tmp/k9s.tar.gz"
+        mode: '0644'
+
+    - name: Extract only k9s binary
+      ansible.builtin.unarchive:
+        src: "/tmp/k9s.tar.gz"
+        dest: "~/bin"
+        extra_opts: ["k9s"]
+        remote_src: true
+
+    - name: Ensure k9s binary is executable
+      ansible.builtin.file:
+        path: "~/bin/k9s"
+        mode: '0755'
+
+    - name: Remove downloaded tarball
+      ansible.builtin.file:
+        path: "/tmp/k9s.tar.gz"
+        state: absent

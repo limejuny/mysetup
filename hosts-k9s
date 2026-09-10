@@ -1,0 +1,13 @@
+[k9s]
+z
+b
+s
+si
+cs
+t
+
+[local]
+localhost
+
+[local:vars]
+ansible_connection=local
